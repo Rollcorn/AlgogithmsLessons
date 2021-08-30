@@ -18,7 +18,6 @@ public class Main {
         Node sixth = new Node(3);
         Node seventh = new Node(6);
 
-
         //Инициализация звеньев
         mylist.addInTail(first);
         mylist.addInTail(second);
@@ -28,7 +27,6 @@ public class Main {
         mylist.addInTail(sixth);
         mylist.addInTail(seventh);
 
-
         //Выведение всех элементов списка
         System.out.println("Выведение всех элементов списка");
         Node node = mylist.head;
@@ -37,13 +35,13 @@ public class Main {
             node = node.next;
         }
 /*
-        // Поиск элемента по ключу
+        //[1] Поиск элемента по ключу
         System.out.println("Поиск элемента по ключу");
         System.out.println(mylist.find(3));
         System.out.println(mylist.find(1));
         System.out.println(mylist.find(7));
 
-        // Поиск всех элементов по ключу
+        //[2] Поиск всех элементов по ключу
         System.out.println("Поиск всех элементов по ключу");
         System.out.println(mylist.findAll(1));
         System.out.println(mylist.findAll(3));
@@ -61,19 +59,20 @@ public class Main {
         for (Node x : result2)
             System.out.println(x.value);
 */
-
-        // Удаление узла по значению ключа
+/*
+        //[3] Удаление узла по значению ключа
         System.out.println("Удаление узла по значению ключа");
-        mylist.remove(1);
-        mylist.remove(4);
-        mylist.removeAll(3);
+//        mylist.remove(1);
+//        mylist.remove(4);
+//        mylist.remove(3);
 
         System.out.println("Оставшиеся элементы");
-        node = mylist.head;
+       node = mylist.head;
         for (int i = 0; node != null; i++) {
             System.out.println("Element " + i + " = " + node.value);
             node = node.next;
         }
+        System.out.println();
 
         mylist.addInTail(first);
         node = mylist.head;
@@ -81,6 +80,40 @@ public class Main {
             System.out.println("Element " + i + " = " + node.value);
             node = node.next;
         }
+        System.out.println();
+
+        mylist.addInTail(third);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println();
+
+        mylist.addInTail(fourth);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+*/
+        //[4]Удаление всех элементов с заданным ключем
+        System.out.println("Удаление всех элементов с заданным ключем");
+        mylist.removeAll(3);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println();
+
+        mylist.addInTail(third);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+
 
 /*
         System.out.println("Очистка списка");

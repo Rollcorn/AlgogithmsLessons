@@ -57,14 +57,13 @@ public class LinkedList
             return true;
         }
 
-        Node tmp;
-        while (node != null) {
+        while (node.next != null) {
             if (node.next.value == a_value){
-                tmp = node.next.next;
-                node.next = null;
+                Node tmp = node.next;
+                node.next = node.next.next;
+                tmp.next = null;
                 return true; // если узел был удалён
-            }
-            node = node.next;
+            } else node = node.next;
         }
         return false;
     }
@@ -75,14 +74,15 @@ public class LinkedList
         Node node = this.head;
         if (node.value == a_value){
             this.head = node.next;
-            node = this.head;
+            node.next = null;
         }
 
         while (node.next != null) {
             if (node.next.value == a_value){
+                Node tmp = node.next;
                 node.next = node.next.next;
-            }
-            node = node.next;
+                tmp.next = null;
+            } else node = node.next;
         }
     }
 
