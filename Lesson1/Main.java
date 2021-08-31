@@ -1,4 +1,4 @@
-package ru.lesson;
+package Lesson1;
 
 import java.util.ArrayList;
 
@@ -96,15 +96,71 @@ public class Main {
             System.out.println("Element " + i + " = " + node.value);
             node = node.next;
         }
+        
+        mylist.remove(6);
+        mylist.remove(1);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
+
+        mylist.remove(2);
+        mylist.remove(3);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
+
+        mylist.remove(3);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
 */
+/*
         //[4]Удаление всех элементов с заданным ключем
         System.out.println("Удаление всех элементов с заданным ключем");
+
+        mylist.removeAll(6);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
+
+        mylist.removeAll(1);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
+
         mylist.removeAll(3);
         node = mylist.head;
         for (int i = 0; node != null; i++) {
             System.out.println("Element " + i + " = " + node.value);
             node = node.next;
         }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
         System.out.println();
 
         mylist.addInTail(third);
@@ -113,7 +169,10 @@ public class Main {
             System.out.println("Element " + i + " = " + node.value);
             node = node.next;
         }
-
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
+*/
 
 /*
         System.out.println("Очистка списка");
@@ -126,19 +185,148 @@ public class Main {
         }
         //Инициализация звеньев 2
         mylist.addInTail(first);
-//        mylist.addInTail(second);
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+        System.out.println();
+        mylist.addInTail(second);
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+        System.out.println();
 //        mylist.addInTail(third);
 //        mylist.addInTail(fourth);
-//        mylist.addInTail(fifth);
+        mylist.addInTail(fifth);
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+        System.out.println();
 //        mylist.addInTail(sixth);
-//        mylist.addInTail(seventh);
+        mylist.addInTail(seventh);
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+        System.out.println();
         node = mylist.head;
         for (int i = 0; node != null; i++) {
             System.out.println("Element " + i + " = " + node.value);
             node = node.next;
         }
+        System.out.println();
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println();
 */
+        
+        //[5] Вставка после элемента
+        System.out.println();
+        mylist.insertAfter(second, seventh);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+/*
+        System.out.println();
+        mylist.insertAfter(second, seventh);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+
+        System.out.println();
+        mylist.insertAfter(second, fifth);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+
+        System.out.println();
+        mylist.insertAfter(second, first);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+
+        System.out.println();
+        mylist.insertAfter(null, fifth);
+        node = mylist.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + mylist.head.value);
+        System.out.println("This tail now is " + mylist.tail.value);
+        System.out.println(mylist.count());
+        */
+
+        // Создание ПЕРВОГО списка
+        LinkedList list_1 = new LinkedList();
+
+        //Инициализация звеньев
+        list_1.addInTail(new Node(1));
+        list_1.addInTail(new Node(1));
+        list_1.addInTail(new Node(1));
+        list_1.addInTail(new Node(1));
+        list_1.addInTail(new Node(2));
+        list_1.addInTail(new Node(2));
+        list_1.addInTail(new Node(2));
+
+        // Создание ПЕРВОГО списка
+        LinkedList list_2 = new LinkedList();       
+        
+        //Инициализация звеньев
+        list_2.addInTail(new Node(1));
+        list_2.addInTail(new Node(1));
+        list_2.addInTail(new Node(1));
+        list_2.addInTail(new Node(2));
+        list_2.addInTail(new Node(2));
+        list_2.addInTail(new Node(2));
+        list_2.addInTail(new Node(2));
+
+
+        LinkedList summ = Summary.ListSummary(list_1, list_2); 
+        node = summ.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        System.out.println("This head now is " + summ.head.value);
+        System.out.println("This tail now is " + summ.tail.value);
+        summ.count();
+
+        System.out.println();
+        // ArrayList<Node> result = summ.findAll(4);
+        summ.removeAll(2);
+        node = summ.head;
+        for (int i = 0; node != null; i++) {
+            System.out.println("Element " + i + " = " + node.value);
+            node = node.next;
+        }
+        
+        // for(Node x : result)
+            // System.out.println(x.value );
+        // System.out.println("This head now is " + summ.head.value);
+        // System.out.println("This tail now is " + summ.tail.value);
+        // summ.count();
 
 
     }
+
+
 }

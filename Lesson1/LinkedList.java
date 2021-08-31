@@ -1,8 +1,6 @@
-package ru.lesson;
+package Lesson1;
 
 import java.util.*;
-
-
 
 public class LinkedList
 {
@@ -62,6 +60,7 @@ public class LinkedList
                 Node tmp = node.next;
                 node.next = node.next.next;
                 tmp.next = null;
+                if(null == node.next) this.tail = node;
                 return true; // если узел был удалён
             } else node = node.next;
         }
@@ -72,17 +71,19 @@ public class LinkedList
     {
         // здесь будет ваш код удаления всех узлов по заданному значению
         Node node = this.head;
-        if (node.value == a_value){
+        while (node.value == a_value){
             this.head = node.next;
             node.next = null;
+            node = this.head;
         }
-
         while (node.next != null) {
             if (node.next.value == a_value){
                 Node tmp = node.next;
                 node.next = node.next.next;
                 tmp.next = null;
-            } else node = node.next;
+                if(node.next.next == null) this.tail = node;
+            } 
+            node = node.next;
         }
     }
 
@@ -90,8 +91,10 @@ public class LinkedList
     {
         // здесь будет ваш код очистки всего списка
         Node node = this.head;
-        Node tmp = node;
-        while (node != null) {
+        Node tmp;
+        while (node != null) 
+        {
+            tmp = node;
             node = node.next;
             tmp.next = null;
         }
@@ -101,18 +104,51 @@ public class LinkedList
 
     public int count()
     {
-        return 0; // здесь будет ваш код подсчёта количества элементов в списке
+        int count = 0;
+        Node node = this.head;
+        while (node != null) 
+        {
+            node = node.next;
+            count++;
+        }
+        return count; // здесь будет ваш код подсчёта количества элементов в списке
     }
 
-    public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
-    {
-        // здесь будет ваш код вставки узла после заданного
-
+    public void insertAfter(Node a_nodeAfter, Node a_nodeToInsert)
+    {    
+        Node node = this.head;
+        if (node == a_nodeToInsert)
+        {
+            this.head = node.next;
+            node.next = null;
+            node = this.head;
+        }else {
+            while (node != null){
+                if(a_nodeToInsert == node.next)
+                {
+                    Node tmp = node.next;
+                    node.next = node.next.next;
+                    tmp.next = null;
+                    if(null == node.next) this.tail = node;
+                }
+                node = node.next; 
+            }         
+        }
         // если _nodeAfter = null ,
         // добавьте новый элемент первым в списке
+        if(a_nodeAfter == null)
+        {
+            Node tmp = this.head;
+            this.head = a_nodeToInsert;
+            a_nodeToInsert.next = tmp;
+        } else if( a_nodeAfter.next != a_nodeToInsert )
+        {
+            Node tmp = a_nodeAfter.next;
+            a_nodeAfter.next = a_nodeToInsert;
+            a_nodeToInsert.next = tmp;
+            if(null == a_nodeToInsert.next) this.tail = a_nodeToInsert;
+        }
     }
-
-
 }
 
 class Node
