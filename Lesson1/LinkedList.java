@@ -1,4 +1,4 @@
-package Lesson1;
+// package Lesson1;
 
 import java.util.*;
 
@@ -69,37 +69,47 @@ public class LinkedList
 
     public void removeAll(int a_value)
     {
-        // здесь будет ваш код удаления всех узлов по заданному значению
-        Node node = this.head;
-        while (node.value == a_value){
-            this.head = node.next;
-            node.next = null;
-            node = this.head;
-        }
-        while (node.next != null) {
-            if (node.next.value == a_value){
-                Node tmp = node.next;
-                node.next = node.next.next;
-                tmp.next = null;
-                if(node.next.next == null) this.tail = node;
-            } 
-            node = node.next;
+        if(this.count() != 0){
+            // здесь будет ваш код удаления всех узлов по заданному значению
+            Node node = this.head;
+            while (node.value == a_value && this.head != null){
+                if((this.head == this.tail) && (this.head.value == a_value))
+                {
+                    this.head = null;
+                    this.tail = null;
+                } else {
+                    this.head = node.next;
+                    node.next = null;
+                    node = this.head;
+                }
+            }
+
+            while (node.next != null && this.head != null) {
+                if (node.next.value == a_value)
+                {
+                    Node tmp = node.next;
+                    node.next = node.next.next;
+                    tmp.next = null;
+                    if(null == node.next) this.tail = node;
+                } else if (node.next != null) node = node.next;  
+            }
         }
     }
 
     public void clear()
     {
-        // здесь будет ваш код очистки всего списка
-        Node node = this.head;
-        Node tmp;
-        while (node != null) 
-        {
-            tmp = node;
-            node = node.next;
-            tmp.next = null;
+        if( this.count() != 0 ){
+            Node node = this.head;
+            Node tmp;
+            while (node != null) 
+            {
+                tmp = node;
+                node = node.next;
+                tmp.next = null;
+            }
+            this.head = null;
+            this.tail = null;
         }
-        this.head = null;
-        this.tail = null;
     }
 
     public int count()
@@ -116,6 +126,7 @@ public class LinkedList
 
     public void insertAfter(Node a_nodeAfter, Node a_nodeToInsert)
     {    
+        // Если пытаемся вставить существующих в списке элемент
         Node node = this.head;
         if (node == a_nodeToInsert)
         {
@@ -134,10 +145,11 @@ public class LinkedList
                 node = node.next; 
             }         
         }
-        // если _nodeAfter = null ,
-        // добавьте новый элемент первым в списке
+        
+        // Вставка элемента
         if(a_nodeAfter == null)
         {
+            if(this.count() == 0) this.tail = a_nodeToInsert;
             Node tmp = this.head;
             this.head = a_nodeToInsert;
             a_nodeToInsert.next = tmp;
