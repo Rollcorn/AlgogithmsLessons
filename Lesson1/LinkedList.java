@@ -1,4 +1,4 @@
-// package Lesson1;
+ package LinkedList;
 
 import java.util.*;
 
@@ -48,24 +48,30 @@ public class LinkedList
 
     public boolean remove(int a_value)
     {
-        Node node = this.head;
-        if (node.value == a_value){
-            this.head = node.next;
-            node.next = null;
-            if(this.count() == 0) this.tail = null;
-            return true;
+        if(this.count() != 0)
+        {
+            Node node = this.head;
+            if (node.value == a_value)
+            {
+                this.head = node.next;
+                node.next = null;
+                if(this.count() == 0) this.tail = null;
+                return true;
+            }
+        
+            while (node.next != null) 
+            {
+                if (node.next.value == a_value)
+                {
+                    Node tmp = node.next;
+                    node.next = node.next.next;
+                    tmp.next = null;
+                    if(null == node.next) this.tail = node;
+                    return true; // если узел был удалён
+                } else node = node.next;
+            }
         }
-
-        while (node.next != null) {
-            if (node.next.value == a_value){
-                Node tmp = node.next;
-                node.next = node.next.next;
-                tmp.next = null;
-                if(null == node.next) this.tail = node;
-                return true; // если узел был удалён
-            } else node = node.next;
-        }
-        return false;
+        return false;    
     }
 
     public void removeAll(int a_value)
@@ -146,7 +152,7 @@ public class LinkedList
                 node = node.next; 
             }         
         }
-        
+    
         // Вставка элемента
         if(a_nodeAfter == null)
         {

@@ -1,9 +1,6 @@
-// package Lesson1;
+package LinkedList;
 
 import java.util.ArrayList;
-
-
-
 
 public class Main {
 
@@ -85,7 +82,9 @@ public class Main {
         //[3] Удаление узла по значению ключа
         t_printList(mylist);
         System.out.println("Удаление узла по значению ключа = 1");
-        mylist.remove(1);
+        // mylist.remove(1);
+        System.out.println(mylist.remove(1));
+
         System.out.println("Оставшиеся элементы");
         t_printList(mylist);
 
@@ -162,7 +161,6 @@ public class Main {
         // t_printList(mylist);
     }
     
-
     public static void t_clear(LinkedList mylist){
         // Создание звеньев
         Node first   = new Node(1);
@@ -300,45 +298,37 @@ public class Main {
 
                 //Инициализация звеньев
                 list_1.addInTail(new Node(1));
-                list_1.addInTail(new Node(1));
-                list_1.addInTail(new Node(1));
-                list_1.addInTail(new Node(1));
                 list_1.addInTail(new Node(2));
-                list_1.addInTail(new Node(2));
-                list_1.addInTail(new Node(2));
+                list_1.addInTail(new Node(3));
+                list_1.addInTail(new Node(4));
+                list_1.addInTail(new Node(5));
+                list_1.addInTail(new Node(6));
+                list_1.addInTail(new Node(7));
         
                 // Создание ВТОРОГО списка
                 LinkedList list_2 = new LinkedList();       
                 
                 //Инициализация звеньев
                 list_2.addInTail(new Node(1));
-                list_2.addInTail(new Node(1));
-                list_2.addInTail(new Node(1));
                 list_2.addInTail(new Node(2));
-                list_2.addInTail(new Node(2));
-                list_2.addInTail(new Node(2));
-                list_2.addInTail(new Node(2));
+                list_2.addInTail(new Node(3));
+                list_2.addInTail(new Node(4));
+                list_2.addInTail(new Node(5));
+                list_2.addInTail(new Node(6));
+                list_2.addInTail(new Node(7));
         
         
                 LinkedList summ = Summary.ListSummary(list_1, list_2); 
-                Node node = summ.head;
-                for (int i = 0; node != null; i++) {
-                    System.out.println("Element " + i + " = " + node.value);
-                    node = node.next;
-                }
-                System.out.println("This head now is " + summ.head.value);
-                System.out.println("This tail now is " + summ.tail.value);
+                t_printList(summ);
                 summ.count();
         
                 System.out.println();
                 // ArrayList<Node> result = summ.findAll(4);
-                summ.removeAll(4);
-                node = summ.head;
-                for (int i = 0; node != null; i++) {
-                    System.out.println("Element " + i + " = " + node.value);
-                    node = node.next;
-                }
                 
+
+
+                // for(Node x : result)
+               
                 // for(Node x : result)
                     // System.out.println(x.value );
                 // System.out.println("This head now is " + summ.head.value);
@@ -373,7 +363,7 @@ public class Main {
         System.out.println("Выведение всех элементов списка");
         t_printList(mylist);
 
-        t_removeAll(mylist);
+        t_remove(mylist);
         
 
     }
