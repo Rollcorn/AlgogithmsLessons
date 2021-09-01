@@ -52,6 +52,7 @@ public class LinkedList
         if (node.value == a_value){
             this.head = node.next;
             node.next = null;
+            if(this.count() == 0) this.tail = null;
             return true;
         }
 

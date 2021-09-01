@@ -1,4 +1,4 @@
-package Lesson1;
+// package Lesson1;
 
 import java.util.ArrayList;
 
@@ -75,12 +75,12 @@ public class Main {
 
         //Инициализация звеньев
         mylist.addInTail(first);
-        mylist.addInTail(second);
-        mylist.addInTail(third);
-        mylist.addInTail(fourth);
-        mylist.addInTail(fifth);
-        mylist.addInTail(sixth);
-        mylist.addInTail(seventh);
+        // mylist.addInTail(second);
+        // mylist.addInTail(third);
+        // mylist.addInTail(fourth);
+        // mylist.addInTail(fifth);
+        // mylist.addInTail(sixth);
+        // mylist.addInTail(seventh);
 
         //[3] Удаление узла по значению ключа
         t_printList(mylist);
@@ -89,73 +89,79 @@ public class Main {
         System.out.println("Оставшиеся элементы");
         t_printList(mylist);
 
-        mylist.addInTail(first);
-        t_printList(mylist);
-        System.out.println("Удаление узла по значению ключа = 3");
-        mylist.remove(3);
+        // mylist.addInTail(first);
+        // t_printList(mylist);
+        // System.out.println("Удаление узла по значению ключа = 3");
+        // mylist.remove(3);
 
-        mylist.addInTail(third);
-        t_printList(mylist);
+        // mylist.addInTail(third);
+        // t_printList(mylist);
 
-        mylist.remove(4);
-        System.out.println("Удаление узла по значению ключа = 4");
-        mylist.addInTail(fourth);
-        t_printList(mylist);
+        // mylist.remove(4);
+        // System.out.println("Удаление узла по значению ключа = 4");
+        // mylist.addInTail(fourth);
+        // t_printList(mylist);
      
-        mylist.remove(6);
-        System.out.println("Удаление узла по значению ключа = 6");
-        mylist.remove(1);
-        System.out.println("Удаление узла по значению ключа = 1");
-        t_printList(mylist);
+        // mylist.remove(6);
+        // System.out.println("Удаление узла по значению ключа = 6");
+        // mylist.remove(1);
+        // System.out.println("Удаление узла по значению ключа = 1");
+        // t_printList(mylist);
 
-        mylist.remove(2);
-        System.out.println("Удаление узла по значению ключа = 2");
-        mylist.remove(3);
-        System.out.println("Удаление узла по значению ключа = 3");
-        t_printList(mylist);
+        // mylist.remove(2);
+        // System.out.println("Удаление узла по значению ключа = 2");
+        // mylist.remove(3);
+        // System.out.println("Удаление узла по значению ключа = 3");
+        // t_printList(mylist);
 
-        mylist.remove(3);
-        t_printList(mylist);
+        // mylist.remove(3);
+        // t_printList(mylist);
 
     }
 
     public static void t_removeAll( LinkedList mylist ){
         // Создание звеньев
         Node first   = new Node(1);
-        Node second  = new Node(1);
-        Node third   = new Node(1);
-        Node fourth  = new Node(1);
-        Node fifth   = new Node(1);
-        Node sixth   = new Node(1);
-        Node seventh = new Node(1);
+        Node second  = new Node(2);
+        // Node third   = new Node(1);
+        // Node fourth  = new Node(1);
+        // Node fifth   = new Node(1);
+        // Node sixth   = new Node(1);
+        // Node seventh = new Node(1);
 
         //Инициализация звеньев
         mylist.addInTail(first);
-        mylist.addInTail(second);
-        mylist.addInTail(third);
-        mylist.addInTail(fourth);
-        mylist.addInTail(fifth);
-        mylist.addInTail(sixth);
-        mylist.addInTail(seventh);
+        // mylist.addInTail(second);
+        // mylist.addInTail(third);
+        // mylist.addInTail(fourth);
+        // mylist.addInTail(fifth);
+        // mylist.addInTail(sixth);
+        // mylist.addInTail(seventh);
 
         //[4]Удаление всех элементов с заданным ключем
         t_printList(mylist);
         System.out.println("Удаление всех элементов с ключем = 6");
-        mylist.removeAll(6);
-        t_printList(mylist);
-
-        System.out.println("Удаление всех элементов с ключем = 1");
         mylist.removeAll(1);
         t_printList(mylist);
 
-        System.out.println("Удаление всех элементов с ключем = 3");
-        mylist.removeAll(3);
+        mylist.addInTail(first);
+        mylist.addInTail(second);
         t_printList(mylist);
 
-        mylist.addInTail(third);
-        t_printList(mylist);
-     
+
+
+        // System.out.println("Удаление всех элементов с ключем = 1");
+        // mylist.removeAll(1);
+        // t_printList(mylist);
+
+        // System.out.println("Удаление всех элементов с ключем = 3");
+        // mylist.removeAll(3);
+        // t_printList(mylist);
+
+        // mylist.addInTail(third);
+        // t_printList(mylist);
     }
+    
 
     public static void t_clear(LinkedList mylist){
         // Создание звеньев
@@ -365,9 +371,10 @@ public class Main {
 */
         //Выведение всех элементов списка
         System.out.println("Выведение всех элементов списка");
-        // t_printList(mylist);
+        t_printList(mylist);
 
-        t_insertAfter(mylist);
+        t_removeAll(mylist);
+        
 
     }
 
