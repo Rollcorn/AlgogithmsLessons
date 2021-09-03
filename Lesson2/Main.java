@@ -29,6 +29,11 @@ public class Main {
             System.out.println("This tail now is " + a_mylist.tail.value);
     }
 
+    public static void t_printPreNext( LinkedList2 a_mylist ){
+        System.out.println("Элемент перед head: " + a_mylist.head.prev);
+        System.out.println("Элемент после  tail: " + a_mylist.tail.next);
+    }
+
 /***********************************************************/
     public static void t_findAll( LinkedList2 a_mylist, int a_value ){
         ArrayList<Node> resultList = new ArrayList<Node>();
@@ -50,7 +55,15 @@ public class Main {
         System.out.println("Оставшиеся элементы: ");
         t_printList(a_mylist);
 
+        System.out.println();
+    }
 
+    public static void t_removeAll( LinkedList2 a_mylist, int a_value ){
+        System.out.println();
+        System.out.println("Удаление элемента по ключу = " + a_value);
+        a_mylist.removeAll(a_value);
+        System.out.println("Оставшиеся элементы: ");
+        t_printList(a_mylist);
 
         System.out.println();
     }
@@ -61,11 +74,11 @@ public class Main {
         mylist.addInTail( new Node(1) );
         mylist.addInTail( new Node(2) );
         mylist.addInTail( new Node(3) );
-        mylist.addInTail( new Node(4) );
+        mylist.addInTail( new Node(5) );
         mylist.addInTail( new Node(5) );
         mylist.addInTail( new Node(6) );
-        mylist.addInTail( new Node(3) );
-        mylist.addInTail( new Node(8) );
+        mylist.addInTail( new Node(5) );
+        mylist.addInTail( new Node(5) );
         mylist.addInTail( new Node(9) );
         mylist.addInTail( new Node(10) );
 
@@ -77,29 +90,46 @@ public class Main {
         // t_findAll(mylist, 3);
 
 // Тест удаления эелемента по ключу
+ /*     
         //Удаление первого элемента в списке
         t_remove(mylist, 1);
-        System.out.println("Элемент перед head: " + mylist.head.prev);
-        System.out.println("Элемент после  tail: " + mylist.tail.next);
+        t_printPreNext(mylist);
+
 
         //Удаление элеменета из конца списка
         t_remove(mylist, 10);
-        System.out.println("Элемент перед head: " + mylist.head.prev);
-        System.out.println("Элемент после  tail: " + mylist.tail.next);
+        t_printPreNext(mylist);
+
 
         //Удаление элемента из пустого списка
         System.out.println("Удаление элемента из пустого списка");
         LinkedList2  emptylist = new LinkedList2();
         t_remove(emptylist, 3);
+        t_printPreNext(mylist);
+
 
         //Удаление последнего элемента списка
         System.out.println("Удаление элемента из списка c одним элементом");
         LinkedList2  oneItemlist = new LinkedList2();
         oneItemlist.addInTail( new Node( 9));
         t_remove(oneItemlist, 9);
-
+*/
 // Тест удаления всех элементов по ключу
-        // TODO
+        // Удаление элемента из центра (середина)
+        t_removeAll(mylist, 5);
+
+
+
+        // Удаление нескольких элементов из начала списка [начало - середина)
+
+
+
+        // Удаление элемента в конце списка (середина - конец]
+
+        
+
+        // Удаление элемента из списка с одинаковыми элементами [начало - конец]
+
 
 
 // Тест вставка элемента после элемента

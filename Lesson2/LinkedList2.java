@@ -60,26 +60,31 @@ public ArrayList<Node> findAll(int a_value)
 // Удалить элемент из списка по ключу
 public boolean remove(int a_value)
 {
-  if(this.count() == 0){
-    return false;
-  }
+  if(this.count() == 0){ return false; }
   
   Node node = this.head;
-  // Проверка головы списка
-  if(node.value == a_value){
-    this.head = node.next;
-    node.next = null;
-    node = this.head;
-    node.prev = null;
-    return true;
-  } else {
-    // Проверка списка
-    while (node != null) {
-      if (node.value == a_value) {
-        if ( this.head == this.tail ) {
-          this.head = null;
-          this.tail = null;
-        } else {
+
+  while (node != null) {
+    // Проверка головы списка
+    if(node == this.head && node.value == a_value){
+      if ( this.head == this.tail ) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = node.next;
+        node.next.prev = null;
+      }
+      node.next = null;
+      node.prev = null;
+
+      return true;
+
+    } else {
+      if (node.value == a_value) { 
+        if(node == this.tail){     // Проверка хвоста списка
+          node.prev.next = null;
+          this.tail = node.prev;
+        }else{
           node.prev.next = node.next; // node.prev.next - не существует для head'a
           node.next.prev = node.prev; // node.next.prev - не существует для tail'a
         }
@@ -96,7 +101,7 @@ public boolean remove(int a_value)
 // Удаление всех элементов из списка по ключу
 public void removeAll(int a_value)
 {
-  if(this.count() == 0){
+  if(this.count() != 0){
     
     Node node = this.head;
     // Проверка головы списка
@@ -117,8 +122,7 @@ public void removeAll(int a_value)
         }
         node.next = null;
         node.prev = null;
-      }
-      node = node.next;
+      }else { node = node.next; }
     }
   }
 }
