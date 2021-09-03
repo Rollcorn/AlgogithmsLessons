@@ -72,18 +72,24 @@ public boolean remove(int a_value)
     node = this.head;
     node.prev = null;
     return true;
-  }
-  
-  // Проверка списка
-  while (node != null) {
-    if(node.value == a_value){
-      node.prev.next = node.next;
-      node.next.prev = node.prev;
-      return true;
+  } else {
+    // Проверка списка
+    while (node != null) {
+      if (node.value == a_value) {
+        if ( this.head == this.tail ) {
+          this.head = null;
+          this.tail = null;
+        } else {
+          node.prev.next = node.next; // node.prev.next - не существует для head'a
+          node.next.prev = node.prev; // node.next.prev - не существует для tail'a
+        }
+        node.prev = null;
+        node.next = null;
+        return true;
+      }
+      node = node.next;
     }
-    node = node.next;
   }
-
   return false; // если узел небыл удалён
 }
 

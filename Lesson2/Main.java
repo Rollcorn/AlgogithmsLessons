@@ -50,8 +50,7 @@ public class Main {
         System.out.println("Оставшиеся элементы: ");
         t_printList(a_mylist);
 
-        System.out.println("Элемент перед head: " + a_mylist.head.prev);
-        System.out.println("Элемент после  tail: " + a_mylist.tail.next);
+
 
         System.out.println();
     }
@@ -59,7 +58,7 @@ public class Main {
     public static void main(String[] args) {
         LinkedList2 mylist = new LinkedList2();
 
-        mylist.addInTail( new Node(3) );
+        mylist.addInTail( new Node(1) );
         mylist.addInTail( new Node(2) );
         mylist.addInTail( new Node(3) );
         mylist.addInTail( new Node(4) );
@@ -68,7 +67,7 @@ public class Main {
         mylist.addInTail( new Node(3) );
         mylist.addInTail( new Node(8) );
         mylist.addInTail( new Node(9) );
-        mylist.addInTail( new Node(3) );
+        mylist.addInTail( new Node(10) );
 
         t_printList(mylist);
         System.out.println(mylist.find(3));
@@ -79,16 +78,25 @@ public class Main {
 
 // Тест удаления эелемента по ключу
         //Удаление первого элемента в списке
-        t_remove(mylist, 3);
-
-        //Удаление элемента из пустого списка
-            // TODO
+        t_remove(mylist, 1);
+        System.out.println("Элемент перед head: " + mylist.head.prev);
+        System.out.println("Элемент после  tail: " + mylist.tail.next);
 
         //Удаление элеменета из конца списка
-            // TODO
+        t_remove(mylist, 10);
+        System.out.println("Элемент перед head: " + mylist.head.prev);
+        System.out.println("Элемент после  tail: " + mylist.tail.next);
+
+        //Удаление элемента из пустого списка
+        System.out.println("Удаление элемента из пустого списка");
+        LinkedList2  emptylist = new LinkedList2();
+        t_remove(emptylist, 3);
 
         //Удаление последнего элемента списка
-                    // TODO
+        System.out.println("Удаление элемента из списка c одним элементом");
+        LinkedList2  oneItemlist = new LinkedList2();
+        oneItemlist.addInTail( new Node( 9));
+        t_remove(oneItemlist, 9);
 
 // Тест удаления всех элементов по ключу
         // TODO
