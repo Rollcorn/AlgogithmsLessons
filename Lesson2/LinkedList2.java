@@ -61,7 +61,7 @@ public ArrayList<Node> findAll(int a_value)
 public boolean remove(int a_value)
 {
   if(this.count() == 0){ return false; }
-  
+
   Node node = this.head;
 
   while (node != null) {
@@ -72,7 +72,7 @@ public boolean remove(int a_value)
         this.tail = null;
       } else {
         this.head = node.next;
-        node.next.prev = null;
+        this.head.prev = null;
       }
       node.next = null;
       node.prev = null;
@@ -101,28 +101,42 @@ public boolean remove(int a_value)
 // Удаление всех элементов из списка по ключу
 public void removeAll(int a_value)
 {
-  if(this.count() != 0){
-    
-    Node node = this.head;
-    // Проверка головы списка
-    while(node.value == a_value && node != null){
-      this.head = node.next;
-      node.next = null;
-      node = this.head;
-      node.prev = null;
-    }
-    
-    // Проверка списка
-    while (node != null) {
-      if(node.value == a_value){
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        if(node.next == null){
-          this.tail = node.prev;
+
+  Node node = this.head;
+  while (node != null) {
+    //Если список пустой, то ничего не надо делать
+    if ( this.count() == 0 ){ break; }
+
+    if ( node.value == a_value ){
+      // Проверка головы списка
+      if ( node == this.head ){
+
+        if ( this.head == this.tail ) {
+          this.head = null;
+          this.tail = null;
+        } else {
+          this.head = node.next;
+          this.head.prev = null;
         }
         node.next = null;
         node.prev = null;
-      }else { node = node.next; }
+        node = this.head;
+
+      } else {
+        if (node == this.tail) {     // Проверка хвоста списка
+          node.prev.next = null;
+          this.tail = node.prev;
+        } else {
+          node.prev.next = node.next; // node.prev.next - не существует для head'a
+          node.next.prev = node.prev; // node.next.prev - не существует для tail'a
+        }
+        Node tmp = node.next;
+        node.prev = null;
+        node.next = null;
+        node = tmp;
+      }
+    } else {
+      node = node.next;
     }
   }
 }
@@ -155,28 +169,60 @@ public int count()
 
 public void insertAfter(Node a_nodeAfter, Node a_nodeToInsert)
 {
-  Node node = this.head;
-  // Проверка головы списка
-  if(node == a_nodeToInsert){
-    this.head = node.next;
-    node.next = null;
-    node = this.head;
-    node.prev = null;
-  } else while (node != null) {
-    if(node == a_nodeToInsert){
-      node.prev.next = node.next;
-      node.next.prev = node.prev;
+
+    // Проверка присутствия втавляемого элемента в списке
+    Node node = this.head;
+
+    while (node != null) {
+      //Если список пустой, то ничего не надо делать
+      if ( this.count() == 0 ){ break; }
+
+      if ( node == a_nodeToInsert ){
+        // Проверка головы списка
+        if ( node == this.head ){
+
+          if ( this.head == this.tail ) {
+            this.head = null;
+            this.tail = null;
+          } else {
+            this.head = node.next;
+            this.head.prev = null;
+          }
+          node.next = null;
+          node.prev = null;
+          node = this.head;
+
+        } else {
+          if (node == this.tail) {     // Проверка хвоста списка
+            node.prev.next = null;
+            this.tail = node.prev;
+          } else {
+            node.prev.next = node.next; // node.prev.next - не существует для head'a
+            node.next.prev = node.prev; // node.next.prev - не существует для tail'a
+          }
+          Node tmp = node.next;
+          node.prev = null;
+          node.next = null;
+          node = tmp;
+        }
+      } else {
+        node = node.next;
+      }
     }
-    node = node.next;
-  }
 
+  // Вставка элемента
   node = this.head;
-  if(a_nodeAfter == null) {
-
-    this.head.prev = a_nodeToInsert;
-    a_nodeToInsert.next = this.head;
-    a_nodeToInsert.prev = null;
-    if(this.count() == 1) this.tail = a_nodeToInsert;
+  if( a_nodeAfter == null ) {
+    if( this.head == null ){
+      a_nodeToInsert.next = null;
+      a_nodeToInsert.prev = null;
+      this.tail = a_nodeToInsert;
+    } else {
+      this.head.prev = a_nodeToInsert;
+      a_nodeToInsert.next = this.head;
+      a_nodeToInsert.prev = null;
+    }
+    this.head = a_nodeToInsert;
 
   } else while( node != null){
       if ( node == a_nodeAfter ){
@@ -186,7 +232,9 @@ public void insertAfter(Node a_nodeAfter, Node a_nodeToInsert)
         a_nodeToInsert.prev = node;
         if( tmp == null ){ this.tail = a_nodeToInsert; }
       }
+      node = node.next;
   }
+
 }
 }
 
