@@ -5,11 +5,11 @@ import java.lang.reflect.Array;
 public class DynArray<T>
 {
   // Для тестов вернуть public а то хз
-  private T [] m_array;
-  private int m_count;
-  private int m_capacity;
-  private int m_minCapacity;
-  Class m_clazz;
+  private T [] m_array;           // Буфер памяти
+  private int m_count;            // Количество элементов в массиве
+  private int m_capacity;         // Размер буфера
+  private int m_minCapacity = 16; // Минимальный размер буфера
+  Class m_clazz;                  // Тип хранимых элементов
 
   /**
    * Конструктор
@@ -53,19 +53,18 @@ public class DynArray<T>
     return m_array[a_index];
   }
   /*****************************************************************
-   * добавление нового элемента в конец массива
+   * Добавление нового элемента в конец массива
    * 
    * @param itm
    */
   public void append(T itm)
   {
-    
     if ( (m_count + 1) == m_capacity ) {
       m_capacity *= 2;
       makeArray(m_capacity);
     } 
     m_array[m_count] = itm;
-    m_count++;
+    m_count += 1;
   }
 
   /*****************************************************************
@@ -77,7 +76,20 @@ public class DynArray<T>
    */
   public void insert(T a_itm, int a_index)
   {
-    // ваш код
+    if(a_index >= 0 && a_index <= m_count ) {
+      m_count++;
+      if ((m_count) == m_capacity) {
+        m_capacity *= 2;
+        makeArray(m_capacity);
+      }
+
+      T insetItem = a_itm;
+      for (int i = a_index; i != m_count; i++){
+        T tmpItem = m_array[i];
+        m_array[i] = insetItem;
+        insetItem = tmpItem;
+      }
+    }
   }
   
   /**
