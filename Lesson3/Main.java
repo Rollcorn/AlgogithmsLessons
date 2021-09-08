@@ -1,4 +1,4 @@
-package Algorithms.DynArray;
+package AlgorithmsLessons.Lesson3;
 
 
 
@@ -28,7 +28,16 @@ public class Main {
         /**
          * Тест метода вставки - insert
          */
+        System.out.println("Вставка элемента = 7 в индекс = 0");
         myArray.insert(7, 0);
         printArray(myArray);
+
+        /**
+         * Тест удаления элемента
+         */
+        System.out.println("Удаление элемента из индекса = 2");
+        myArray.remove(2);
+        printArray(myArray);
+
     }
 }
