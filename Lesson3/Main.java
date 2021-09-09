@@ -1,4 +1,4 @@
-// package AlgorithmsLessons.Lesson3;
+package AlgorithmsLessons.Lesson3;
 // package Algorithms.DynArray;
 
 
@@ -58,7 +58,11 @@ public class Main {
         t_remove(myArray, 3);
         t_insert(myArray, 10, myArray.count());
         // t_insert(myArray, 10, -1);
-        t_insert(myArray, 10, -5);
+        t_insert(myArray, 10, myArray.count() + 1);
+        // t_remove(myArray, -3);
+        // t_remove( myArray, myArray.count() );
+
+
 
  /*       
         myArray.append(9);

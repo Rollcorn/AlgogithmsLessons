@@ -1,4 +1,4 @@
-// package AlgorithmsLessons.Lesson3;
+package AlgorithmsLessons.Lesson3;
 // package Algorithms.DynArray;
 
 import java.lang.reflect.Array;
@@ -6,11 +6,11 @@ import java.lang.reflect.Array;
 public class DynArray<T>
 {
   // Для тестов вернуть public а то хз
-  private T [] m_array;           // Буфер памяти
-  private int m_count;            // Количество элементов в массиве
-  private int m_capacity;         // Размер буфера
-  private int m_minCapacity = 16; // Минимальный размер буфера
-  Class m_clazz;                  // Тип хранимых элементов
+  public T [] array;           // Буфер памяти
+  public int count;            // Количество элементов в массиве
+  public int capacity;         // Размер буфера
+  public int minCapacity = 16; // Минимальный размер буфера
+  Class clazz;                  // Тип хранимых элементов
 
   /*****************************************************************
    * Конструктор
@@ -19,10 +19,10 @@ public class DynArray<T>
    */
   public DynArray(Class a_clz)
   {
-    m_clazz = a_clz; // нужен для безопасного приведения типов
-    m_count = 0;
-    m_capacity = m_minCapacity;
-    makeArray(m_capacity);
+    clazz = a_clz; // нужен для безопасного приведения типов
+    count = 0;
+    capacity = minCapacity;
+    makeArray(capacity);
   }
 
   /******************************************************************************
@@ -34,12 +34,12 @@ public class DynArray<T>
    */
   public void makeArray(int a_newCapacity)
   {
-    if (m_count == 0){
-      m_array = ( T[] ) Array.newInstance( this.m_clazz, a_newCapacity );
+    if (count == 0){
+      array = ( T[] ) Array.newInstance( this.clazz, a_newCapacity );
     } else {
-      T [] newArray = ( T[] ) Array.newInstance( this.m_clazz, a_newCapacity );
+      T [] newArray = ( T[] ) Array.newInstance( this.clazz, a_newCapacity );
       this.copy(newArray);
-      m_array = newArray;
+      array = newArray;
     } 
 
   }
@@ -52,10 +52,10 @@ public class DynArray<T>
   public T getItem(int a_index) throws ArrayIndexOutOfBoundsException
   {
     // Проверка индекса массива
-    if( !( (a_index >= 0) && (a_index < m_count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
+    if( !( (a_index >= 0) && (a_index < count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
 
-    assert( a_index <= m_count && a_index >= 0);
-    return m_array[a_index];
+    assert( a_index <= count && a_index >= 0);
+    return array[a_index];
   }
   /************************************************************************
    * Добавление нового элемента в конец массива
@@ -64,12 +64,12 @@ public class DynArray<T>
    */
   public void append(T itm)
   {
-    if ( 0 == (m_capacity - m_count) ) {
-      m_capacity *= 2;
-      makeArray(m_capacity);
+    if ( 0 == (capacity - count) ) {
+      capacity *= 2;
+      makeArray(capacity);
     } 
-    m_array[m_count] = itm;
-    m_count += 1;
+    array[count] = itm;
+    count += 1;
   }
 
   /**********************************************************************
@@ -84,26 +84,26 @@ public class DynArray<T>
   public void insert(T a_itm, int a_index) throws ArrayIndexOutOfBoundsException
   {
     // Проверка индекса массива
-    if( !( (a_index >= 0) && (a_index <= m_count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
+    if( !( (a_index >= 0) && (a_index <= count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
 
     T insetItem = a_itm;
     T tmpItem;
     
     // Проверка объема буфера
-    if ( (m_capacity - m_count) == 0) {
-      m_capacity *= 2;
-      makeArray(m_capacity);
+    if ( (capacity - count) == 0) {
+      capacity *= 2;
+      makeArray(capacity);
     }
     
-    for ( int i = a_index;  i <= m_count; i++){
+    for ( int i = a_index;  i <= count; i++){
       // Смещение элементов
-      tmpItem = m_array[i];
-      m_array[i] = insetItem;
+      tmpItem = array[i];
+      array[i] = insetItem;
       insetItem = tmpItem;
     } 
     
     // Увеличение счетчика
-    m_count += 1;
+    count += 1;
   }
   
   /**************************************************************************************
@@ -117,23 +117,23 @@ public class DynArray<T>
    */
   public void remove(int a_index) throws ArrayIndexOutOfBoundsException
   {
-    if( !( (a_index >= 0) && (a_index < m_count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
+    if( !( (a_index >= 0) && (a_index < count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
     
     // Сдвиг элементов (удаление)
-    for(int i = a_index; i < m_count; i++ ){
-      m_array[i] = m_array[i + 1];
+    for(int i = a_index; i < count; i++ ){
+      array[i] = array[i + 1];
     }
     // Уменьшение счетчика элементов
-    m_count -= 1;
+    count -= 1;
 
     // Поддержание заполненности буфера более 50%
-    if(m_count <= 0.5*m_capacity) {
-      if (m_capacity / 1.5 <= m_minCapacity) {
-        m_capacity = m_minCapacity;
+    if(count <= 0.5*capacity) {
+      if (capacity / 1.5 <= minCapacity) {
+        capacity = minCapacity;
       } else {
         // Уменьшить размер буфера в 1,5 раза
-        m_capacity /= 1.5;
-        makeArray(m_capacity);
+        capacity /= 1.5;
+        makeArray(capacity);
       }
     }
   }
@@ -143,14 +143,14 @@ public class DynArray<T>
    * @return
    */
   public int count(){
-    return m_count;
+    return count;
   }
 
   /**********************************************************
    * Объем буфера массива 
    */
   public int capacity(){
-    return m_capacity;
+    return capacity;
   }
 
   /******************************************************************
@@ -160,7 +160,7 @@ public class DynArray<T>
    */
   private void copy(T[] a_array){
     for(int i = 0; i != count(); i++){
-      a_array[i] = m_array[i];
+      a_array[i] = array[i];
     }
   }
 
