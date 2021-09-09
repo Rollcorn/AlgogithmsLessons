@@ -1,8 +1,5 @@
-// package AlgorithmsLessons.Lesson3;
+package AlgorithmsLessons.Lesson3;
 // package Algorithms.DynArray;
-
-
-
 
 public class Main {
 

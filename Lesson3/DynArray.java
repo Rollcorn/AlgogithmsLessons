@@ -1,4 +1,4 @@
-// package AlgorithmsLessons.Lesson3;
+package AlgorithmsLessons.Lesson3;
 // package Algorithms.DynArray;
 
 import java.lang.reflect.Array;
@@ -6,10 +6,10 @@ import java.lang.reflect.Array;
 public class DynArray<T>
 {
   // Для тестов вернуть public а то хз
-  public T [] array;           // Буфер памяти
-  public int count;            // Количество элементов в массиве
-  public int capacity;         // Размер буфера
-  public int minCapacity = 16; // Минимальный размер буфера
+  public T [] array;            // Буфер памяти
+  public int count;             // Количество элементов в массиве
+  public int capacity;          // Размер буфера
+  public int minCapacity = 16;  // Минимальный размер буфера
   Class clazz;                  // Тип хранимых элементов
 
   /*****************************************************************
@@ -52,7 +52,9 @@ public class DynArray<T>
   public T getItem(int a_index) throws ArrayIndexOutOfBoundsException
   {
     // Проверка индекса массива
-    if( !( (a_index >= 0) && (a_index < count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
+    if( !( (a_index >= 0) && (a_index < count) ) ){ 
+      throw new ArrayIndexOutOfBoundsException(); 
+    }
 
     assert( a_index <= count && a_index >= 0);
     return array[a_index];
@@ -84,7 +86,9 @@ public class DynArray<T>
   public void insert(T a_itm, int a_index) throws ArrayIndexOutOfBoundsException
   {
     // Проверка индекса массива
-    if( !( (a_index >= 0) && (a_index <= count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
+    if( !( (a_index >= 0) && (a_index <= count) ) ){ 
+      throw new ArrayIndexOutOfBoundsException(); 
+    }
 
     T insetItem = a_itm;
     T tmpItem;
@@ -117,7 +121,9 @@ public class DynArray<T>
    */
   public void remove(int a_index) throws ArrayIndexOutOfBoundsException
   {
-    if( !( (a_index >= 0) && (a_index < count) ) ){ throw new ArrayIndexOutOfBoundsException(); }
+    if( !( (a_index >= 0) && (a_index < count) ) ){ 
+      throw new ArrayIndexOutOfBoundsException(); 
+    }
     
     // Сдвиг элементов (удаление)
     for(int i = a_index; i < count; i++ ){
