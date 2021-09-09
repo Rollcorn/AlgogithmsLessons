@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson3;
+package Algorithms.DynArray;
 
 import java.lang.reflect.Array;
 
@@ -119,10 +119,14 @@ public class DynArray<T>
     if(a_index >= 0 && a_index < m_count) m_count -= 1;
       
     // Поддержание количества элементов в буфере более 50%
-    if(m_count <= 0.5*m_capacity){
-      // Уменьшить размер буфера в 1,5 раза
-      m_capacity /= 1.5;
-      makeArray(m_capacity);
+    if(m_count <= 0.5*m_capacity) {
+      if (m_capacity / 1.5 < m_minCapacity) {
+        m_capacity = m_minCapacity;
+      } else {
+        // Уменьшить размер буфера в 1,5 раза
+        m_capacity /= 1.5;
+        makeArray(m_capacity);
+      }
     }
   }
 
