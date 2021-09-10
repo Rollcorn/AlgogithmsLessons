@@ -4,7 +4,8 @@ import java.util.*;
 
 public class Stack<T>
 {
-    LinkedList<T> m_list;
+    private LinkedList<T> m_list;
+
     /**
      * Конструктор - инициализация внутреннего хранилища стека
      */
@@ -20,7 +21,11 @@ public class Stack<T>
      */
     public int size() 
     {
-     return 0;
+        if( m_list.isEmpty() ){
+            return 0;
+        } else {
+            return m_list.size();
+        }
     }
 
     /**
@@ -29,8 +34,11 @@ public class Stack<T>
      */
     public T pop()
     {
-     // ваш код
-     return null;  // если стек пустой
+        if( m_list.isEmpty() ){
+            return null;  // если стек пустой
+        } else {
+            return m_list.removeLast();
+        }
     }
 
     /**
@@ -39,7 +47,7 @@ public class Stack<T>
      */
     public void push(T val)
     {
-     // ваш код
+        m_list.addLast(val);
     }
 
     /**
@@ -48,7 +56,10 @@ public class Stack<T>
      */
     public T peek()
     {
-     // ваш код
-     return null; // если стек пустой
+        if(m_list.isEmpty()){
+            return null; // если стек пустой
+        } else {
+            return m_list.getLast();
+        }
     }
 }
