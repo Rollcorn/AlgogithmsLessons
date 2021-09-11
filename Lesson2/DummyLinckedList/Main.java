@@ -21,8 +21,8 @@ public class Main {
         System.out.println("This tail now is " + a_mylist.tail().value);
     }
 
-/***********************************************************/
-     
+/**********************************************************************************/
+     // Распечатать текущий список
     public static void t_remove( DLinkedList<Integer> a_mylist, int a_value ){
         System.out.println();
         System.out.println("Удаление элемента по ключу = " + a_value);
@@ -32,9 +32,11 @@ public class Main {
 
         System.out.println();
     }
-/*
-    public static void t_removeAll( LinkedList2 a_mylist, int a_value ){
+
+    // Тест удаления всех элементов по ключу
+    public static void t_removeAll( DLinkedList<Integer> a_mylist, Integer a_value ){
         System.out.println();
+
         System.out.println("Удаление элемента по ключу = " + a_value);
         t_printList(a_mylist);
         a_mylist.removeAll(a_value);
@@ -43,15 +45,15 @@ public class Main {
 
         System.out.println();
     }
-*/
 
+    // Тест вставка элемента a_item после a_after
     public static void t_insertAfter( DLinkedList<Integer> a_mylist, 
                                       DNode<Integer> a_after, 
                                       DNode<Integer> a_item){
         System.out.println("В список: ");
         t_printList(a_mylist);
 
-        System.out.println("Вставка элемента после звена = " + a_after);
+        System.out.println("Вставка элемента" + a_item.value + " после звена = " + ((a_after == null)? a_after: a_after.value));
         a_mylist.insertAfter(a_after, a_item);
         System.out.println("Оставшиеся элементы: ");
         t_printList(a_mylist);
@@ -174,7 +176,8 @@ public class Main {
 /*****************************************
  *  Тест вставка элемента после элемента
  ******************************************/
-DLinkedList<Integer> list4 = new DLinkedList<Integer>();
+/*
+        DLinkedList<Integer> list4 = new DLinkedList<Integer>();
 
         // Инициализация списка list4
         DNode<Integer> elem1 = new DNode<Integer>(1);
@@ -194,8 +197,6 @@ DLinkedList<Integer> list4 = new DLinkedList<Integer>();
         // Вставка элемента в центр списка
         t_insertAfter(list4, elem1, elem4);
 
-
-
 //        list4.addInTail(elem1);
 //        list4.addInTail(elem3);
 //        list4.addInTail(elem2);
@@ -204,6 +205,38 @@ DLinkedList<Integer> list4 = new DLinkedList<Integer>();
 //        t_insertAfter(list4, elem2, elem4);
 
         System.out.println();
+*/
+
+/*****************************************
+ *  Тест удаления всех элементов по ключу
+ ******************************************/
+        DLinkedList<Integer> list5 = new DLinkedList<Integer>();
+
+        // Инициализация списка list4
+        DNode<Integer> elem1 = new DNode<Integer>(4);
+        DNode<Integer> elem2 = new DNode<Integer>(4);
+        DNode<Integer> elem3 = new DNode<Integer>(1);
+        DNode<Integer> elem4 = new DNode<Integer>(1);
+        DNode<Integer> elem5 = new DNode<Integer>(2);
+        DNode<Integer> elem6 = new DNode<Integer>(1);
+        DNode<Integer> elem7 = new DNode<Integer>(5);
+        DNode<Integer> elem8 = new DNode<Integer>(5);
+
+        list5.addInTail(elem1);
+        list5.addInTail(elem2);
+        list5.addInTail(elem3);
+        list5.addInTail(elem4);
+        list5.addInTail(elem5);
+        list5.addInTail(elem6);
+        list5.addInTail(elem7);
+        list5.addInTail(elem8);
+
+        t_removeAll(list5, 4);
+        t_removeAll(list5, 5);
+        t_removeAll(list5, 2);
+        t_removeAll(list5, 1);
+
+
 
     }
 }
