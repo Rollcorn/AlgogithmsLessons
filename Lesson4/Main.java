@@ -8,12 +8,12 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        // Создание стека
+        // РЎРѕР·РґР°РЅРёРµ СЃС‚РµРєР°
         Stack<Integer> myStack = new Stack<Integer>();
 
-        // Заполнение стека
+        // Р—Р°РїРѕР»РЅРµРЅРёРµ СЃС‚РµРєР°
         myStack.push(1);
-        // Получить верхушку стека
+        // РџРѕР»СѓС‡РёС‚СЊ РІРµСЂС…СѓС€РєСѓ СЃС‚РµРєР°
         System.out.println( "[1] = " + myStack.peek() );
 
         myStack.push(2);
@@ -30,8 +30,11 @@ public class Main {
 
         System.out.println( );
 
-        // Очистка стека
+        // РћС‡РёСЃС‚РєР° СЃС‚РµРєР°
         t_printStack(myStack);
+
+        
+        System.out.println( Stack.frameBalance("(((())))()") );
 
     }
 }
