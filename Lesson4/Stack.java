@@ -20,11 +20,7 @@ public class Stack<T>
      */
     public int size() 
     {
-        if( m_list.isEmpty() ){
-            return 0;
-        } else {
-            return m_list.size();
-        }
+        return m_list.size();
     }
 
     /*************************************************
@@ -54,7 +50,7 @@ public class Stack<T>
     /************************************************************
      * Определяет сбалансированны ли скобки в переданной строке 
      */
-    public static boolean frameBalance(String str){
+/*    public static boolean frameBalance(String str){
        
         Stack<Character> myStack = new Stack<Character>();
         for(int i = 0; i < str.length(); i++){
@@ -80,7 +76,7 @@ public class Stack<T>
     /************************************************************
      * Вычисляет выражение в постфиксной записи "8 2 + 5 * 9"
      */
-    public static Integer postfixCalc( Stack<Character> a_expr){
+ /*   public static Integer postfixCalc( Stack<Character> a_expr){
 
         Stack<Integer> res = new Stack<Integer>();
         int resVar;
@@ -120,5 +116,6 @@ public class Stack<T>
         }
         return res.pop();
     }
+*/
 }
 
