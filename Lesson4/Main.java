@@ -38,13 +38,13 @@ public class Main {
 
         // Очистка стека
         t_printStackInt(myStack);
-/*
+
         String checkStr = "(((())))()";
         System.out.println("Frames sequences: " + checkStr );
         System.out.println( Stack.frameBalance(checkStr) );
         System.out.println( );
-*/
-/*
+
+
         System.out.println("Postfix calculating: ");
         Stack<Character> exprStack = new Stack<Character>();
         exprStack.push('=');
@@ -59,6 +59,6 @@ public class Main {
         // Очистка стека
         // t_printStackChar(exprStack);
         System.out.println("Result is: " + Stack.postfixCalc(exprStack));
-*/
+
     }
 }

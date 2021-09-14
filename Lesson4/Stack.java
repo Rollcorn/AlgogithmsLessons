@@ -1,4 +1,4 @@
-﻿// package AlgorithmsLessons.Lesson4;
+﻿package AlgorithmsLessons.Lesson4;
 
 import java.util.*;
 
@@ -6,51 +6,33 @@ public class Stack<T>
 {
     private LinkedList<T> m_list;
 
-    /***********************************************************
-     * Конструктор - инициализация внутреннего хранилища стека
-     */
     public Stack()
     {
         m_list = new LinkedList<T>();
         
     } 
 
-    /*************************
-     * Размер текущего стека		  
-     */
     public int size() 
     {
         return m_list.size();
     }
 
-    /*************************************************
-     * Извлекает последний помещенный в стек элемент
-     */
     public T pop()
     {
         return m_list.pollFirst();
     }
 
-    /****************************************
-     * Помещает элемент на самый верх стека
-     */
     public void push(T val)
     {
         m_list.addFirst(val);;
     }
 
-    /****************************************************
-     * Получить верхний элемент стека, но не удалять его
-     */
     public T peek()
     {
         return m_list.peekFirst();
     }
 
-    /************************************************************
-     * Определяет сбалансированны ли скобки в переданной строке 
-    */
-   public static boolean frameBalance(String str){
+    public static boolean frameBalance(String str){
        
         Stack<Character> myStack = new Stack<Character>();
         for(int i = 0; i < str.length(); i++){
@@ -73,10 +55,7 @@ public class Stack<T>
         return ( myStack.size() == 0 )? true : false;
     }
 
-    /************************************************************
-     * Вычисляет выражение в постфиксной записи "8 2 + 5 * 9"
-     */
-       public static Integer postfixCalc( Stack<Character> a_expr){
+    public static Integer postfixCalc( Stack<Character> a_expr){
 
         Stack<Integer> res = new Stack<Integer>();
         int resVar;
