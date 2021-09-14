@@ -17,7 +17,6 @@ public class Stack<T>
 
     /*************************
      * Размер текущего стека		  
-     * @return
      */
     public int size() 
     {
@@ -30,7 +29,6 @@ public class Stack<T>
 
     /*************************************************
      * Извлекает последний помещенный в стек элемент
-     * @return
      */
     public T pop()
     {
@@ -39,7 +37,6 @@ public class Stack<T>
 
     /****************************************
      * Помещает элемент на самый верх стека
-     * @param val
      */
     public void push(T val)
     {
@@ -48,7 +45,6 @@ public class Stack<T>
 
     /****************************************************
      * Получить верхний элемент стека, но не удалять его
-     * @return
      */
     public T peek()
     {
@@ -82,7 +78,47 @@ public class Stack<T>
     }
 
     /************************************************************
-     *  
+     * Вычисляет выражение в постфиксной записи "8 2 + 5 * 9"
      */
+    public static Integer postfixCalc( Stack<Character> a_expr){
+
+        Stack<Integer> res = new Stack<Integer>();
+        int resVar;
+        int tmpVar;
+        while ( 0 != a_expr.size() ){
+
+            switch(a_expr.peek())
+            {
+                case '+':
+                    a_expr.pop();
+                    resVar = res.pop() + res.pop();
+                    res.push(resVar);
+                    break;
+                case '-':
+                    a_expr.pop();
+                    tmpVar =  res.pop();
+                    resVar = res.pop() - tmpVar;
+                    res.push(resVar);
+                    break;
+                case '*':
+                    a_expr.pop();
+                    resVar = res.pop() * res.pop();
+                    res.push(resVar);
+                    break;
+                case '/':
+                    a_expr.pop();
+                    tmpVar =  res.pop();
+                    resVar = res.pop() / tmpVar;
+                    res.push(resVar);
+                    break;
+                case '=':
+                    a_expr.pop();
+                    return res.pop();
+                default:
+                    res.push( Integer.parseInt( String.valueOf(a_expr.pop()) ) );
+            }
+        }
+        return res.pop();
+    }
 }
 
