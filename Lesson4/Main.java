@@ -7,8 +7,13 @@ public class Main {
             System.out.println("[" + i + "] = " + a_stack.pop() );
         }
     }
+    public static void t_printStackInt(Stack<Integer> a_stack){
+        for(int i = a_stack.size(); i != 0; i--){
+            System.out.println("[" + i + "] = " + a_stack.pop() );
+        }
+    }
     public static void main(String[] args) {
-/*      
+      
         // Создание стека
         Stack<Integer> myStack = new Stack<Integer>();
 
@@ -32,13 +37,14 @@ public class Main {
         System.out.println( );
 
         // Очистка стека
-        t_printStack(myStack);
-
+        t_printStackInt(myStack);
+/*
         String checkStr = "(((())))()";
         System.out.println("Frames sequences: " + checkStr );
         System.out.println( Stack.frameBalance(checkStr) );
         System.out.println( );
 */
+/*
         System.out.println("Postfix calculating: ");
         Stack<Character> exprStack = new Stack<Character>();
         exprStack.push('=');
@@ -53,6 +59,6 @@ public class Main {
         // Очистка стека
         // t_printStackChar(exprStack);
         System.out.println("Result is: " + Stack.postfixCalc(exprStack));
-
+*/
     }
 }
