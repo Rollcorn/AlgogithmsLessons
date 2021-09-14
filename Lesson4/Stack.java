@@ -1,5 +1,3 @@
-﻿package AlgorithmsLessons.Lesson4;
-
 import java.util.*;
 
 public class Stack<T>
