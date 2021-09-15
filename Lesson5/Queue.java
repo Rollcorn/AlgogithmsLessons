@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson5;
+// package AlgorithmsLessons.Lesson5;
 
 import java.util.*;
 
