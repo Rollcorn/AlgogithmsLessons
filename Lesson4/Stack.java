@@ -45,7 +45,7 @@ public class Stack<T>
             }
 
         }
-        return ( myStack.size() == 0 )? true : false;
+        return myStack.size() == 0;
     }
 
     public static Integer postfixCalc( Stack<Character> a_expr){
