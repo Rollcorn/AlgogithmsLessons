@@ -1,3 +1,5 @@
+package AlgorithmsLessons.Lesson4;
+
 import java.util.*;
 
 public class Stack<T>
@@ -33,23 +35,16 @@ public class Stack<T>
     public static boolean frameBalance(String str){
        
         Stack<Character> myStack = new Stack<Character>();
-        for(int i = 0; i < str.length(); i++){
 
-            if( (myStack.size() == 0)){
-                if( (str.charAt(i) == '(' || str.charAt(i) == ')')){
-                    myStack.push( str.charAt(i) );
-                } else {
-                    continue;
-                }
-            } else {
-                if ( (myStack.peek() == '(') && ( str.charAt(i) == ')' ) ) {
-                    myStack.pop();
-                } else if( (str.charAt(i) == '(') || (str.charAt(i) == ')') ){
-                    myStack.push( str.charAt(i) );
-                }
+        for ( int i = 0; i < str.length(); i++ ) {
+
+            if ( (str.charAt(i) == ')') &&  (myStack.peek().equals('(')) ) {
+                myStack.pop();
+            } else if( ( str.charAt(i) == '(') || (str.charAt(i) == ')') ){
+                myStack.push( str.charAt(i) );
             }
-        }
 
+        }
         return ( myStack.size() == 0 )? true : false;
     }
 

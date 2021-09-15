@@ -39,7 +39,7 @@ public class Main {
         // Очистка стека
         t_printStackInt(myStack);
 
-        String checkStr = "(((())))()";
+        String checkStr = "(((()))()";
         System.out.println("Frames sequences: " + checkStr );
         System.out.println( Stack.frameBalance(checkStr) );
         System.out.println( );
