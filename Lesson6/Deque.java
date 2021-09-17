@@ -23,12 +23,12 @@ public class Deque<T>
 
     public T removeFront()
     {
-        return m_list.removeFirst();
+        return m_list.pollFirst();
     }
 
     public T removeTail()
     {
-     return m_list.removeLast();
+     return m_list.pollLast();
     }
 
     public T peekTail()
