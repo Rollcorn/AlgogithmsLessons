@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson6;
+// package AlgorithmsLessons.Lesson6;
 
 import java.util.*;
 
@@ -28,12 +28,43 @@ public class Deque<T>
 
     public T removeTail()
     {
-     // удаление из хвоста
      return m_list.removeLast();
+    }
+
+    public T peekTail()
+    {
+     return m_list.peekLast();
+    }
+
+    public T peekFirst()
+    {
+        return m_list.peekFirst();
     }
         
     public int size()
     {
-     return m_list.size(); // размер очереди
+     return m_list.size();
+    }
+    
+    public static boolean palindromCheck(String str){
+        Deque<Character> charList = new Deque<Character>();
+        
+        for(int i = 0; i != str.length(); i++){
+            charList.addTail(str.charAt(i));
+        }
+
+        while( charList.size() != 0 ){
+            if( charList.size() == 1 ){
+                return true;
+            }
+
+            if( charList.peekFirst() == charList.peekTail() ){
+                charList.removeFront();
+                charList.removeTail();
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 }
