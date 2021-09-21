@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson7;
+// package AlgorithmsLessons.Lesson7;
 import java.util.*;
 
 
@@ -82,7 +82,7 @@ import java.util.*;
 
         while( node != null ){
             int cmp = compare(node.value, a_value);
-            System.out.println("Find iter " + node.value);
+
             if( ( _ascending && ( cmp > 0) ) || 
                 ( !_ascending && ( cmp < 0) ) ){ break; }
 
