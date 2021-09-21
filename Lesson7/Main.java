@@ -45,18 +45,19 @@ public class Main {
         mList.add(9);
         mList.add(4);
         mList.add(5);
-        mList.add(7);
+        mList.add(4);
         mList.add(2);
         mList.add(1);
         t_printList(mList);
 
         t_find(mList, 7);
-
+/*
         t_delete(mList, 2);
         t_printList(mList);
 
         t_clear(mList);
         t_printList(mList);
+        t_find(mList, 7);
 
         t_delete(mList, 5);
         t_printList(mList);
@@ -78,7 +79,7 @@ public class Main {
         t_printList(mList);
         t_delete(mList, 9);
         t_printList(mList);
-
+*/
 
     }
 }

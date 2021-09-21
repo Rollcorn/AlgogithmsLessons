@@ -81,11 +81,16 @@ import java.util.*;
         Node<T> node = this.head;
 
         while( node != null ){
-          if ( node.value == a_value ){
-            return node;
-          } else {
-            node = node.next;
-          }
+            int cmp = compare(node.value, a_value);
+            System.out.println("Find iter " + node.value);
+            if( ( _ascending && ( cmp > 0) ) || 
+                ( !_ascending && ( cmp < 0) ) ){ break; }
+
+            if ( node.value == a_value ){
+              return node;
+            } else {
+              node = node.next;
+            }
         }
       
         return null;
