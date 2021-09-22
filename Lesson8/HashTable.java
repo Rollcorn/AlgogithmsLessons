@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson8;
+// package AlgorithmsLessons.Lesson8;
 
 public class HashTable
 {
