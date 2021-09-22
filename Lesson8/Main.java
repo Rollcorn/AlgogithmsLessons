@@ -37,6 +37,28 @@ public class Main {
 
         t_find(mHTable, "meet" );
 
+        HashTable mHTable2 = new HashTable(17, 3);
+
+        mHTable2.put("1");
+        mHTable2.put("2");
+        mHTable2.put("3");
+        mHTable2.put("4");
+        mHTable2.put("5");
+        mHTable2.put("6");
+        mHTable2.put("7");
+        mHTable2.put("8");
+        mHTable2.put("9");
+        mHTable2.put("10");
+        mHTable2.put("11");
+        mHTable2.put("12");
+        mHTable2.put("13");
+        mHTable2.put("14");
+        mHTable2.put("15");
+        mHTable2.put("16");
+        mHTable2.put("17");
+
+        mHTable2.printTable();
+
 
 
 

@@ -16,12 +16,11 @@ public class HashTable
 
   public int hashFun(String value)
   {    
-      int res = 0;
+      int hash = 0;
       for(int i = 0; i != value.length(); i++){
-          res += value.codePointAt(i);
+        hash =( hash * 31 + value.charAt(i) ) % size;
       }
-      res = res%size;
-      return res;
+      return hash;
   }
 
   public int seekSlot(String a_value)
