@@ -58,11 +58,11 @@ public class HashTable
 
     for(int count = 0; count <= size; count++){
       
-      if(slots[slotNum] == a_value){
+      if ( slots[slotNum] == a_value ){
         return slotNum;
       }
 
-      if(slotNum + step > size - 1){
+      if ( slotNum + step > size - 1 ){
         slotNum = slotNum + step - size;
       } else {
         slotNum += step;
@@ -71,12 +71,14 @@ public class HashTable
 
     return -1;
   }
-
+  
+/*
   public void printTable(){
     
     for(int i = 0; i != size; i++){
       System.out.println("The slot = " + i + " : " + slots[i]);
-    }
-    
+    } 
   }
+*/
+  
 }
