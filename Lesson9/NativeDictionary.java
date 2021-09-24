@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson9;
+// package AlgorithmsLessons.Lesson9;
 import java.lang.reflect.Array;
 
 class NativeDictionary<T>
@@ -23,23 +23,58 @@ class NativeDictionary<T>
         return hash;
     }
 
-    public boolean isKey(String key)
+    public boolean isKey(String a_key)
     {
-      // возвращает true если ключ имеется,
-      // иначе false
-      return false;
+        int hashKey = hashFun(a_key);
+
+        for ( int count = 0 ; count < size ; count++ ){
+            if( slots[hashKey].equals(a_key) ){
+                return true;
+            } else {
+                hashKey = (hashKey + 3) % size;
+            }
+        }
+        return false;
     }
 
-    public void put(String key, T value)
+    public void put(String a_key, T a_value)
     {
-      // гарантированно записываем 
-      // значение value по ключу key
+        int hashKey = hashFun(a_key);
+
+        for ( int count = 0 ; slots[hashKey] != null && count < size ; count++ ){
+            if( slots[hashKey].equals(a_key) ){
+                break;
+            } else {
+                hashKey = (hashKey + 3) % size;
+            }
+        }
+
+        if(slots[hashKey] == null){
+            slots[hashKey] = a_key;
+        }
+        values[hashKey] = a_value;
     }
 
-    public T get(String key)
+    public T get(String a_key)
     {
-      // возвращает value для key, 
-      // или null если ключ не найден
-      return null;
+
+        if( !isKey(a_key) ){
+            return null;
+        }
+
+        int hashKey = hashFun(a_key);
+        while ( !slots[hashKey].equals(a_key) ){
+            hashKey = (hashKey + 3) % size;
+        }
+        return values[hashKey];
+
     }
+/*
+    public void printTable(){
+    
+        for(int i = 0; i != size; i++){
+          System.out.println("The slot = [" + i + "] : key[" + slots[i] + "] : values [" + values[i] + "]" );
+        } 
+      }
+*/
 }
