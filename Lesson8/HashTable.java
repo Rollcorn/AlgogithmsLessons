@@ -1,4 +1,4 @@
-// package AlgorithmsLessons.Lesson8;
+package AlgorithmsLessons.Lesson8;
 
 public class HashTable
 {
@@ -26,7 +26,7 @@ public class HashTable
   public int seekSlot(String a_value)
   {
     int slotNum = hashFun(a_value);
-    for(int count = 0; count <= size; count++){
+    for ( int count = 0; !(count > size); count++ ){
       
       if(slots[slotNum] == null){
         return slotNum;
@@ -68,7 +68,6 @@ public class HashTable
         slotNum += step;
       }
     }
-
     return -1;
   }
 
@@ -77,6 +76,6 @@ public class HashTable
     for(int i = 0; i != size; i++){
       System.out.println("The slot = " + i + " : " + slots[i]);
     }
-    
   }
+
 }
