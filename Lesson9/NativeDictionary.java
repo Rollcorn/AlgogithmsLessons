@@ -1,4 +1,4 @@
-// package AlgorithmsLessons.Lesson9;
+//package AlgorithmsLessons.Lesson9;
 import java.lang.reflect.Array;
 
 class NativeDictionary<T>
@@ -26,14 +26,27 @@ class NativeDictionary<T>
     public boolean isKey(String a_key)
     {
         int hashKey = hashFun(a_key);
+        boolean equals = false;
 
-        for ( int count = 0 ; count < size ; count++ ){
-            if( slots[hashKey].equals(a_key) ){
+        for ( int count = 0 ; (count < size) && (slots[hashKey] != null); count++, hashKey = (hashKey + 3) % size ){
+
+            if( slots[hashKey].length() != a_key.length() ){
+                continue;
+            }
+
+            for( int i = 0 ; i != a_key.length(); i++){
+                if( slots[hashKey].charAt(i) != a_key.charAt(i)){
+                    equals = false;
+                    break;
+                } else {
+                    equals = true;
+                }
+            }
+            if ( equals ) {
                 return true;
-            } else {
-                hashKey = (hashKey + 3) % size;
             }
         }
+
         return false;
     }
 
@@ -69,12 +82,14 @@ class NativeDictionary<T>
         return values[hashKey];
 
     }
+    
 /*
     public void printTable(){
     
         for(int i = 0; i != size; i++){
           System.out.println("The slot = [" + i + "] : key[" + slots[i] + "] : values [" + values[i] + "]" );
         } 
-      }
+    }
 */
+
 }
