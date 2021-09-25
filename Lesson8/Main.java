@@ -31,9 +31,9 @@ public class Main {
         mHTable.put("meet");
         mHTable.put("you");
 
-        System.out.println("The hashcode = " + mHTable.hashFun("H"));
+        System.out.println("The hashcode = " + mHTable.hashFun("gi"));
 
-        mHTable.printTable();
+        // mHTable.printTable();
 
         t_find(mHTable, "meet" );
 
@@ -57,7 +57,7 @@ public class Main {
         mHTable2.put("16");
         mHTable2.put("17");
 
-        mHTable2.printTable();
+        // mHTable2.printTable();
 
 
 
