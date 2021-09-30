@@ -2,7 +2,7 @@
 
 public class PowerSet
 {
-    public int m_capacity = 5;
+    public int m_capacity = 20000;
     int step = 1;
     public int m_size;
     public String [] m_slots; 
@@ -69,7 +69,7 @@ public class PowerSet
             hashKey = (hashKey + step) % m_capacity;
         }
 
-        if ( m_slots[hashKey] == null ){
+        if ( m_slots[hashKey] == null && !checkKey ){
             System.out.println(hashKey);
             m_slots[hashKey] = a_value;
             m_size += 1;
