@@ -76,7 +76,7 @@ public class PowerSet
 
     public boolean get(String a_value)
     {
-        return isKey(a_key);
+        return isKey(a_value);
     }
 
     public boolean remove(String a_value)
