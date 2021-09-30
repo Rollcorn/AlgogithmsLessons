@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson10;
+// package AlgorithmsLessons.Lesson10;
 
 public class PowerSet
 {
