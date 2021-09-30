@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson10;
+// package AlgorithmsLessons.Lesson10;
 
 public class PowerSet
 {
@@ -24,35 +24,36 @@ public class PowerSet
    {    
        int hash = 0;
        for(int i = 0; i != value.length(); i++){
-         hash =( hash * 31 + value.charAt(i) ) % m_capacity;
+         hash = ( hash * 31 + value.charAt(i) ) % m_capacity;
        }
        return hash;
    }
 
    private boolean isKey(String a_key)
    {
-       int hashKey = hashFun(a_key);
-       boolean equals = false;
+        int hashKey = hashFun(a_key);
+        boolean equals = false;
 
-       for ( int count = 0 ; (count < m_capacity) ; count++, hashKey = (hashKey + 3) % m_capacity ){
+        for ( int count = 0 ; count < m_capacity ; count++, hashKey = (hashKey + 3) % m_capacity ){
+            if ( m_slots[hashKey] == null ) { break; }
 
-           if( ( hashFun( m_slots[hashKey]) != hashKey ) || m_slots[hashKey].length() != a_key.length() ){
-               continue;
-           }
+            if( ( hashFun(m_slots[hashKey]) != hashFun(a_key) ) && m_slots[hashKey].length() != a_key.length() ){
+                continue;
+            }
 
-           for( int i = 0 ; i != a_key.length(); i++){
-               if( m_slots[hashKey].charAt(i) != a_key.charAt(i)){
-                   equals = false;
-                   break;
-               } else {
-                   equals = true;
-               }
-           }
-           if ( equals ) {
-               return true;
-           }
-       }
-       return false;
+            for( int i = 0 ; i != a_key.length(); i++){
+                if( m_slots[hashKey].charAt(i) != a_key.charAt(i)){
+                    equals = false;
+                    break;
+                } else {
+                equals = true;
+                }
+            }
+            if ( equals ) {
+                return true;
+            }
+        }
+        return false;
    }
 
     public void put(String a_value)
@@ -107,8 +108,8 @@ public class PowerSet
         PowerSet intersectSet = new PowerSet();
 
         for ( int i = 0; i < this.m_capacity ; i++ ){
-            if ( m_slots[i] != null && set2.isKey(m_slots[i]) ){
-                intersectSet.put(m_slots[i]);
+            if ( this.m_slots[i] != null && set2.isKey( this.m_slots[i] ) ){
+                intersectSet.put(this.m_slots[i]);
             } 
         }
 
@@ -117,11 +118,14 @@ public class PowerSet
 
     public PowerSet union(PowerSet set2)
     {
-        PowerSet unionSet = set2;
+        PowerSet unionSet = new PowerSet();
 
-        for (int i = 0; i < this.m_size; i++){
-            if ( m_slots[i] != null ){
-                unionSet.put(m_slots[i]);
+        for (int i = 0; (i < this.m_capacity) || (i < set2.m_capacity) ; i++){
+            if ( this.m_slots[i] != null && i < this.m_capacity ){
+                unionSet.put(this.m_slots[i]);
+            } 
+            if ( set2.m_slots[i] != null && i < set2.m_capacity ){
+                unionSet.put(set2.m_slots[i]);
             } 
         }
 
@@ -133,7 +137,7 @@ public class PowerSet
         PowerSet diffSet = new PowerSet();
 
         for ( int i = 0; i < this.m_capacity ; i++ ){
-            if ( m_slots[i] != null && !set2.isKey(m_slots[i]) ){
+            if ( this.m_slots[i] != null && !set2.isKey(m_slots[i]) ){
                 diffSet.put(m_slots[i]);
             } 
         }
@@ -150,10 +154,11 @@ public class PowerSet
         }
 
         for ( int i = 0; i < set2.m_capacity ; i++ ){
+            String checkSlot = set2.m_slots[i];
 
-            if ( set2.m_slots[i] == null ){
+            if ( checkSlot == null ){
                 continue;
-            } else if ( this.isKey(m_slots[i]) ){
+            } else if ( this.isKey(checkSlot) ){
                 equalCheck = true;
             } else {
                 equalCheck = false;
@@ -165,9 +170,12 @@ public class PowerSet
     }
 
     public void printTable(){
-        for(int i = 0; (i < m_capacity) ; i++){
-          System.out.println("The slot = [" + i + "] : value[" + m_slots[i] + "]" );
+        for(int i = 0; i < m_capacity ; i++){
+            if ( m_slots[i] != null ){
+                System.out.println("The slot = [" + i + "] : value[" + m_slots[i] + "]" );
+            }
         } 
+        System.out.println();
     }
 
 }
