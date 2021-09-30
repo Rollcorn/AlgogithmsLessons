@@ -2,9 +2,9 @@
 
 public class PowerSet
 {
-    private int m_capacity = 20;
-    private int m_size;
-    private String [] m_slots; 
+    public int m_capacity = 20000;
+    public int m_size;
+    public String [] m_slots; 
 
     public PowerSet()
     {
@@ -72,6 +72,11 @@ public class PowerSet
         }
         m_size += 1;
 
+    }
+
+    public boolean get(String a_value)
+    {
+        return isKey(a_key);
     }
 
     public boolean remove(String a_value)
