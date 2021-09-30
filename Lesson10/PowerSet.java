@@ -1,8 +1,9 @@
-package AlgorithmsLessons.Lesson10;
+// package AlgorithmsLessons.Lesson10;
 
 public class PowerSet
 {
-    public int m_capacity = 20000;
+    public int m_capacity = 5;
+    int step = 1;
     public int m_size;
     public String [] m_slots; 
 
@@ -34,7 +35,7 @@ public class PowerSet
         int hashKey = hashFun(a_key);
         boolean equals = false;
 
-        for ( int count = 0 ; count <= m_capacity ; count++, hashKey = (hashKey + 3) % m_capacity ){
+        for ( int count = 0 ; count < m_capacity ; count++, hashKey = (hashKey + step) % m_capacity ){
             if ( m_slots[hashKey] == null ) { break; }
 
             if( ( hashFun(m_slots[hashKey]) != hashFun(a_key) ) && m_slots[hashKey].length() != a_key.length() ){
@@ -60,14 +61,16 @@ public class PowerSet
     {
         int hashKey = hashFun(a_value);
         boolean checkKey = isKey(a_value);  //Check this value in the set
+        System.out.println("hash of : " + a_value + " is " + hashKey);
 
-        for ( int count = 0 ; (m_slots[hashKey] != null) && (count <= m_capacity) ; count++ ){
+        for ( int count = 0 ; ( m_slots[hashKey] != null ) && (count < m_capacity) ; count++ ){
             //if set already has this value dont put it again
             if( checkKey == true ) break;
-            hashKey = (hashKey + 3) % m_capacity;
+            hashKey = (hashKey + step) % m_capacity;
         }
 
         if ( m_slots[hashKey] == null ){
+            System.out.println(hashKey);
             m_slots[hashKey] = a_value;
             m_size += 1;
         }
@@ -88,13 +91,13 @@ public class PowerSet
 
         // Looking for slot which has key = a_value 
         while ( ! m_slots[hashKey].equals(a_value) ){
-            hashKey = (hashKey + 3) % m_capacity;
+            hashKey = (hashKey + step) % m_capacity;
         }
 
         // Remove this key
         m_slots[hashKey] = null;
         m_size--;
-        hashKey = (hashKey + 3) % m_capacity;
+        hashKey = (hashKey + step) % m_capacity;
 
         // Fix sequence following for the removed key
         while( m_slots[hashKey] != null ) {
@@ -102,7 +105,7 @@ public class PowerSet
             m_slots[hashKey] = null;
             m_size--;
             put(keyToRedo);
-            hashKey = (hashKey + 3) % m_capacity;
+            hashKey = (hashKey + step) % m_capacity;
         }
         return true;
 
@@ -173,7 +176,7 @@ public class PowerSet
         return equalCheck;
 
     }
-
+/*
     public void printTable(){
         for(int i = 0; i < m_capacity ; i++){
             if ( m_slots[i] != null ){
@@ -182,5 +185,5 @@ public class PowerSet
         } 
         System.out.println();
     }
-
+*/
 }
