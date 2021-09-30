@@ -1,4 +1,4 @@
-// package AlgorithmsLessons.Lesson10;
+package AlgorithmsLessons.Lesson10;
 
 public class PowerSet
 {
@@ -34,7 +34,7 @@ public class PowerSet
         int hashKey = hashFun(a_key);
         boolean equals = false;
 
-        for ( int count = 0 ; count < m_capacity ; count++, hashKey = (hashKey + 3) % m_capacity ){
+        for ( int count = 0 ; count <= m_capacity ; count++, hashKey = (hashKey + 3) % m_capacity ){
             if ( m_slots[hashKey] == null ) { break; }
 
             if( ( hashFun(m_slots[hashKey]) != hashFun(a_key) ) && m_slots[hashKey].length() != a_key.length() ){
@@ -61,22 +61,22 @@ public class PowerSet
         int hashKey = hashFun(a_value);
         boolean checkKey = isKey(a_value);  //Check this value in the set
 
-        for ( int count = 0 ; (m_slots[hashKey] != null) && (count < m_capacity) ; count++ ){
+        for ( int count = 0 ; (m_slots[hashKey] != null) && (count <= m_capacity) ; count++ ){
             //if set already has this value dont put it again
             if( checkKey == true ) break;
             hashKey = (hashKey + 3) % m_capacity;
         }
 
-        if (m_slots[hashKey] == null){
+        if ( m_slots[hashKey] == null ){
             m_slots[hashKey] = a_value;
+            m_size += 1;
         }
-        m_size += 1;
 
     }
 
     public boolean get(String a_value)
     {
-        return isKey(a_key);
+        return isKey(a_value);
     }
 
     public boolean remove(String a_value)
