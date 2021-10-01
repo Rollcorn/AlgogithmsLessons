@@ -1,4 +1,4 @@
-//  package AlgorithmsLessons.Lesson10;
+ package AlgorithmsLessons.Lesson10;
 
 public class PowerSet
 {
@@ -23,9 +23,8 @@ public class PowerSet
 
    public int hashFun(String value)
    {    
-
        int hash = 0;
-       for(int i = 0; i != value.length() || value == null; i++){
+       for(int i = 0; i != value.length(); i++){
          hash = ( hash * 31 + value.charAt(i) ) % m_capacity;
        }
        return hash;
@@ -33,12 +32,11 @@ public class PowerSet
 
    public boolean get(String a_key)
    {
-
         int hashKey = hashFun(a_key);
         boolean equals = false;
 
         for ( int count = 0 ; count < m_capacity ; count++, hashKey = (hashKey + step) % m_capacity ){
-            if ( m_slots[hashKey] == null || a_key == null) { break; }
+            if ( m_slots[hashKey] == null ) { break; }
 
             if( ( hashFun(m_slots[hashKey]) != hashFun(a_key) ) && m_slots[hashKey].length() != a_key.length() ){
                 continue;
@@ -52,7 +50,6 @@ public class PowerSet
                 equals = true;
                 }
             }
-
             if ( equals ) {
                 return true;
             }
@@ -62,8 +59,6 @@ public class PowerSet
 
     public void put(String a_value)
     {
-        if(a_value == null){ return; }
-
         int hashKey = hashFun(a_value);
         boolean checkKey = get(a_value);  //Check this value in the set
         // While not found empty slot or number of trys not equal sets capacity keep looking
@@ -83,8 +78,6 @@ public class PowerSet
 
     public boolean remove(String a_value)
     {
-        if(a_value == null){ return false; }
-
         int hashKey = hashFun(a_value);
         boolean checkKey = get(a_value);
 
@@ -177,7 +170,7 @@ public class PowerSet
         return equalCheck;
 
     }
-/*
+
     public void printTable(){
         for(int i = 0; i < m_capacity ; i++){
             if ( m_slots[i] != null ){
@@ -188,5 +181,5 @@ public class PowerSet
         System.out.println("Set Size = " + this.m_size);
         System.out.println();
     }
-*/
+
 }
