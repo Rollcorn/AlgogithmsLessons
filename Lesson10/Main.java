@@ -9,35 +9,93 @@ public class Main {
 
         System.out.println("Set1");
         pwset1.put("test");
+        pwset1.put("Conor");
         pwset1.put("hello");
         pwset1.put("world");
-        pwset1.put("hello");
+        pwset1.put("Sarah");
+        pwset1.put("Conor");
+        pwset1.put("qopj");
+        pwset1.put("System");
+        pwset1.put("f");
+        pwset1.put("wfa");
+        pwset1.put("asfag");
+        pwset1.put("ytr");
+        pwset1.put("zxcvgh");
+        pwset1.put("yui");
+        pwset1.put("vusdbhv");
+        pwset1.put("nuibo");
+        pwset1.put("buiwe");
+        pwset1.put("ojwenew");
+        pwset1.put("nweurfb");
+
+        System.out.println("Start");
+        for (int i = 0; i != 21000; i++){
+            pwset1.put(Character.toString((i)));
+        }
+        System.out.println(Character.toString((1)));
+        System.out.println("Stop");
+
+        System.out.println("Start");
+        for (int i = 0; i != 21000; i++){
+            pwset1.remove(Character.toString(i));
+        }
+        System.out.println("Stop");
+
+        System.out.println("Start");
+        pwset1.get(Character.toString((19900)));
+        System.out.println("Stop");
+
+
+/*
+        int j = 0;
+        while (j != 300000){
+            j++;
+        }
+        int count = 0;
+        for (int i = 0; i != 1000; i++){
+            // if(pwset1.remove(Character.toString((i * 31 + i*3 ) % 20000))){
+            //     count++;
+            // }
+            if( pwset1.remove(Character.toString(1)) ){
+                count++;
+            }
+            System.out.println(Character.toString((1)));
+            while (j != 30000){
+                j++;
+            }
+        }
 
         pwset1.printTable();
-        System.out.println(pwset1.m_size);
+        System.out.println(count);
 
-        PowerSet pwset2 = new PowerSet();
+        for (int i = 0; i != 21000; i++){
+            pwset1.put(Character.toString((i)));
+        }
 
-        System.out.println("Set2");
-        pwset2.put("test");
-        pwset2.put("hello");
-        pwset2.put("my");
-        pwset2.put("dear");
+        pwset1.printTable();
+*/
+        // PowerSet pwset2 = new PowerSet();
 
-        pwset2.printTable();
+        // System.out.println("Set2");
+        // pwset2.put("test");
+        // pwset2.put("hello");
+        // pwset2.put("my");
+        // pwset2.put("dear");
 
-        System.out.println(pwset1.m_size);
-        pwset1.put("test");
-        pwset1.put("hello");
-        pwset1.put("world");
-        System.out.println(pwset1.m_size);
+        // pwset2.printTable();
 
-        pwset1.put("hello");
-        pwset1.put("test");
-        pwset1.put("hello");
-        pwset1.put("world");
-        pwset1.put("hello");
-        System.out.println(pwset1.m_size);
+        // System.out.println(pwset1.m_size);
+        // pwset1.put("test");
+        // pwset1.put("hello");
+        // pwset1.put("world");
+        // System.out.println(pwset1.m_size);
+
+        // pwset1.put("hello");
+        // pwset1.put("test");
+        // pwset1.put("hello");
+        // pwset1.put("world");
+        // pwset1.put("hello");
+        // System.out.println(pwset1.m_size);
 
 
 

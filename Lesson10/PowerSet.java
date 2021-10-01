@@ -2,8 +2,8 @@
 
 public class PowerSet
 {
-    public int m_capacity = 5;
-    int step = 1;
+    public int m_capacity = 20000;
+    int step = 3;
     public int m_size;
     public String [] m_slots; 
 
@@ -21,7 +21,7 @@ public class PowerSet
         return m_size;
    }
 
-   private int hashFun(String value)
+   public int hashFun(String value)
    {    
        int hash = 0;
        for(int i = 0; i != value.length(); i++){
@@ -30,7 +30,7 @@ public class PowerSet
        return hash;
    }
 
-   private boolean isKey(String a_key)
+   public boolean get(String a_key)
    {
         int hashKey = hashFun(a_key);
         boolean equals = false;
@@ -60,32 +60,26 @@ public class PowerSet
     public void put(String a_value)
     {
         int hashKey = hashFun(a_value);
-        boolean checkKey = isKey(a_value);  //Check this value in the set
-        System.out.println("hash of : " + a_value + " is " + hashKey);
-
+        boolean checkKey = get(a_value);  //Check this value in the set
+        // While not found empty slot or number of trys not equal sets capacity keep looking
         for ( int count = 0 ; ( m_slots[hashKey] != null ) && (count < m_capacity) ; count++ ){
             //if set already has this value dont put it again
             if( checkKey == true ) break;
+
             hashKey = (hashKey + step) % m_capacity;
         }
 
-        if ( m_slots[hashKey] == null ){
-            System.out.println(hashKey);
+        // if this slot is empty and we dont have this value in the set put value in set
+        if ( m_slots[hashKey] == null && checkKey == false){
             m_slots[hashKey] = a_value;
             m_size += 1;
         }
-
-    }
-
-    public boolean get(String a_value)
-    {
-        return isKey(a_value);
     }
 
     public boolean remove(String a_value)
     {
         int hashKey = hashFun(a_value);
-        boolean checkKey = isKey(a_value);
+        boolean checkKey = get(a_value);
 
         if ( checkKey == false ) { return false; }
 
@@ -116,7 +110,7 @@ public class PowerSet
         PowerSet intersectSet = new PowerSet();
 
         for ( int i = 0; i < this.m_capacity ; i++ ){
-            if ( this.m_slots[i] != null && set2.isKey( this.m_slots[i] ) ){
+            if ( this.m_slots[i] != null && set2.get( this.m_slots[i] ) ){
                 intersectSet.put(this.m_slots[i]);
             } 
         }
@@ -145,7 +139,7 @@ public class PowerSet
         PowerSet diffSet = new PowerSet();
 
         for ( int i = 0; i < this.m_capacity ; i++ ){
-            if ( this.m_slots[i] != null && !set2.isKey(m_slots[i]) ){
+            if ( this.m_slots[i] != null && !set2.get(m_slots[i]) ){
                 diffSet.put(m_slots[i]);
             } 
         }
@@ -166,7 +160,7 @@ public class PowerSet
 
             if ( checkSlot == null ){
                 continue;
-            } else if ( this.isKey(checkSlot) ){
+            } else if ( this.get(checkSlot) ){
                 equalCheck = true;
             } else {
                 equalCheck = false;
@@ -176,13 +170,16 @@ public class PowerSet
         return equalCheck;
 
     }
-/*
+
+    /*
     public void printTable(){
         for(int i = 0; i < m_capacity ; i++){
             if ( m_slots[i] != null ){
                 System.out.println("The slot = [" + i + "] : value[" + m_slots[i] + "]" );
             }
         } 
+        System.out.println();
+        System.out.println("Set Size = " + this.m_size);
         System.out.println();
     }
 */
