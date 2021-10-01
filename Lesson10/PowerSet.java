@@ -1,4 +1,4 @@
- package AlgorithmsLessons.Lesson10;
+//  package AlgorithmsLessons.Lesson10;
 
 public class PowerSet
 {
@@ -177,7 +177,7 @@ public class PowerSet
         return equalCheck;
 
     }
-
+/*
     public void printTable(){
         for(int i = 0; i < m_capacity ; i++){
             if ( m_slots[i] != null ){
@@ -188,5 +188,5 @@ public class PowerSet
         System.out.println("Set Size = " + this.m_size);
         System.out.println();
     }
-
+*/
 }
