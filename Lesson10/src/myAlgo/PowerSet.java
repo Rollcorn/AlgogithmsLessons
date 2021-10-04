@@ -44,7 +44,7 @@ public class PowerSet {
             }
 
             if (mSlots[hashKey].equals(aKey)) {
-                equals = true;
+                return true;
             }
         }
 
