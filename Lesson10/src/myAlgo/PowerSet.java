@@ -1,4 +1,4 @@
-package AlgorithmsLessons.Lesson10.src.myAlgo;
+// package AlgorithmsLessons.Lesson10.src.myAlgo;
 
 public class PowerSet {
     private static final int CAPACITY = 20000;
