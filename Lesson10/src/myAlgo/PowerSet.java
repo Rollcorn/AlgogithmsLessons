@@ -1,4 +1,4 @@
-package myAlgo;
+//package AlgorithmsLessons.Lesson10.src.myAlgo;
 
 public class PowerSet {
     private static final int CAPACITY = 20000;
@@ -39,17 +39,12 @@ public class PowerSet {
              count++, hashKey = (hashKey + STEP) % CAPACITY) {
 
             // Equals keys must have equals hashes and equals lengths
-            if ((hashFun(mSlots[hashKey]) != hashFun(aKey)) && mSlots[hashKey].length() != aKey.length()) {
+            if ( ( hashFun(mSlots[hashKey]) != hashFun(aKey) ) && ( mSlots[hashKey].length() != aKey.length() ) ) {
                 continue;
             }
-            // Compare slot key and aKey
-            int i = 0;
-            for (; (i < aKey.length()) && (mSlots[hashKey].charAt(i) == aKey.charAt(i)); i++) {
+
+            if (mSlots[hashKey].equals(aKey)) {
                 equals = true;
-            }
-            // Approve that we get to the last char of the key
-            if (i == aKey.length()) {
-                return equals;
             }
         }
 
