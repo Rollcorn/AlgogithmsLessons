@@ -1,4 +1,4 @@
-//package AlgorithmsLessons.Lesson10.src.myAlgo;
+package AlgorithmsLessons.Lesson10.src.myAlgo;
 
 public class PowerSet {
     private static final int CAPACITY = 20000;
@@ -39,12 +39,12 @@ public class PowerSet {
              count++, hashKey = (hashKey + STEP) % CAPACITY) {
 
             // Equals keys must have equals hashes and equals lengths
-            if ( ( hashFun(mSlots[hashKey]) != hashFun(aKey) ) && ( mSlots[hashKey].length() != aKey.length() ) ) {
+            if ((hashFun(mSlots[hashKey]) != hashFun(aKey)) && (mSlots[hashKey].length() != aKey.length())) {
                 continue;
             }
 
             if (mSlots[hashKey].equals(aKey)) {
-                equals = true;
+                return true;
             }
         }
 
@@ -149,32 +149,22 @@ public class PowerSet {
 
     public boolean isSubset(PowerSet set2) {
 
-        if (set2 == null) {
-            return true;
-        }
-
         boolean equalCheck = true;
         String checkingSlot;
-        // Check is the all elements of smallest set is apart of other set
-        if (this.size() > set2.size()) {
-            for (var i = 0; (i < CAPACITY) && equalCheck; i++) {
-                checkingSlot = set2.mSlots[i];
 
-                if (checkingSlot == null) {
-                    continue;
-                }
-                equalCheck = this.get(checkingSlot);
-            }
-        } else {
-            for (var i = 0; (i < CAPACITY) && equalCheck; i++) {
-                checkingSlot = this.mSlots[i];
-
-                if (checkingSlot == null) {
-                    continue;
-                }
-                equalCheck = set2.get(checkingSlot);
-            }
+        if ( set2 != null && this.size() < set2.size()) {
+            equalCheck = false;
         }
+
+        for (var i = 0;  set2 != null && ( i < CAPACITY ) && equalCheck; i++) {
+            checkingSlot = set2.mSlots[i];
+
+            if (checkingSlot == null) {
+                continue;
+            }
+            equalCheck = this.get(checkingSlot);
+        }
+
         return equalCheck;
 
     }

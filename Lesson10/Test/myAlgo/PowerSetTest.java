@@ -1,5 +1,6 @@
-package myAlgo;
+package AlgorithmsLessons.Lesson10.Test.myAlgo;
 
+import AlgorithmsLessons.Lesson10.src.myAlgo.PowerSet;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -48,6 +49,14 @@ public class PowerSetTest {
 
 
         Assert.assertEquals("Size wrong ", 15, mset.size());
+
+        PowerSet ps = new PowerSet();
+        for(int i = 0; i < 10000; i++){
+            ps.put(String.valueOf(i));
+            ps.put(null);
+        }
+        Assert.assertEquals("Size wrong ", 10000, ps.size());
+
 
     }
 
@@ -334,12 +343,12 @@ public class PowerSetTest {
         Assert.assertFalse("Wrong Subset result set1 - set2", pwset1.isSubset(pwset2) );
         Assert.assertFalse("Wrong Subset result set2 - set1", pwset2.isSubset(pwset1) );
         Assert.assertTrue("Wrong Subset result set1 - set2", pwset1.isSubset(pwset3) );
-        Assert.assertTrue("Wrong Subset result set2 - set1", pwset3.isSubset(pwset1));
+        Assert.assertFalse("Wrong Subset result set2 - set1", pwset3.isSubset(pwset1));
 
         // [2] Union set1 - empty
         PowerSet pwsetEmpty = new PowerSet();
         Assert.assertTrue("Wrong Subset result set1 - empty", pwset1.isSubset(pwsetEmpty) );
-        Assert.assertTrue("Wrong Subset result empty - set1", pwsetEmpty.isSubset(pwset1) );
+        Assert.assertFalse("Wrong Subset result empty - set1", pwsetEmpty.isSubset(pwset1) );
         pwsetEmpty = null;
         Assert.assertTrue("Wrong Subset result set1 - empty", pwset1.isSubset(pwsetEmpty) );
 
