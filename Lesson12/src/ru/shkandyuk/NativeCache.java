@@ -132,6 +132,9 @@ class NativeCache<T> {
 
     }
 
+    /***********************************************************************
+     * Looking for element with smalest using frequency and return its key
+     */
     public String minHits() {
         int min = 0;
         int minIndex = 0;
