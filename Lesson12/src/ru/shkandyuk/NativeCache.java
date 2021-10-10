@@ -1,7 +1,6 @@
-package ru.shkandyuk;
+// package ru.shkandyuk;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 
 class NativeCache<T> {
     public int size;
