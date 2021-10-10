@@ -1,18 +1,21 @@
 package ru.shkandyuk;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 class NativeCache<T> {
     public int size;
     public String[] slots;
     public T[] values;
     public int[] hits;
+    Class clazz;
 
-    public void NativeCache(int sz, Class clazz) {
+    public NativeCache(int sz, Class clz) {
+        clazz = clz;
         size = sz;
         slots = new String[size];
         hits = new int[size];
-        values = (T[]) Array.newInstance(clazz, this.size);
+        values = (T[]) Array.newInstance(this.clazz, this.size);
 
         for (int i = 0; i != size; i++) {
             slots[i] = null;
@@ -50,10 +53,12 @@ class NativeCache<T> {
     /*************************************************
      * Insert element IN collection by key and value
      */
-    public void put(String aKey, T aValue) {
+    public int put(String aKey, T aValue) {
         int hashKey = hashFun(aKey);
-        int count; // count attempts
-        boolean isEqualKey = false; //check slot and key is equals
+        // count attempts
+        int count;
+        //check slot and key is equals
+        boolean isEqualKey = false;
 
         // Looking for a slot
         // cycle is end only when find in collection empty slot, slot with received key, or it cannot
@@ -69,27 +74,37 @@ class NativeCache<T> {
 
         // Adding element in collection
         if (aKey != null) {
-            // we cant find in collection empty slot or received key
-            if (!isEqualKey && slots[hashKey] != null) { // we don't have
-                remove(minHits());
-                put(aKey, aValue);
-            } else { // we already have this key in collection or find empty slot
+            // we already have received key in collection
+            if (isEqualKey) {
+                values[hashKey] = aValue;
+
+                // we can't find in collection empty slot
+            } else if (slots[hashKey] == null) {
                 slots[hashKey] = aKey;
                 values[hashKey] = aValue;
+                hits[hashKey] = 0;
+
+                // In all other cases empty some slot and put received key-value
+            } else {
+                remove(minHits());
+                put(aKey, aValue);
             }
+
         }
+
+        return hashKey;
     }
 
     /*************************************************
      * Return value from collection by key
      */
-    public T get(String a_key) {
-        if (!isKey(a_key)) {
+    public T get(String aKey) {
+        if (!isKey(aKey)) {
             return null;
         }
 
-        int hashKey = hashFun(a_key);
-        while (!slots[hashKey].equals(a_key)) {
+        int hashKey = hashFun(aKey);
+        while (!slots[hashKey].equals(aKey)) {
             hashKey = (hashKey + 3) % size;
         }
         hits[hashKey]++;
@@ -117,15 +132,19 @@ class NativeCache<T> {
         // Remove this slot and its value
         slots[hashKey] = null;
         values[hashKey] = null;
+        hits[hashKey] = 0;
 
         // Fix sequence following for the removed key
         hashKey = (hashKey + 3) % size;
         while (slots[hashKey] != null) {
             String keyToRedo = slots[hashKey];
             T valToRedo = values[hashKey];
+            int hitsRedo = hits[hashKey];
+
             slots[hashKey] = null;
             values[hashKey] = null;
-            put(keyToRedo, valToRedo);
+            hits[hashKey] = 0;
+            hits[ put(keyToRedo, valToRedo) ] = hitsRedo;
             hashKey = (hashKey + 3) % size;
         }
         return true;
@@ -139,7 +158,14 @@ class NativeCache<T> {
         int min = 0;
         int minIndex = 0;
         for (int i = 0; i != size; i++) {
-            if (hits[i] < min) minIndex = i;
+            if (i == 0) {
+                min = hits[i];
+            } else {
+                if (hits[i] < min) {
+                    min = hits[i];
+                    minIndex = i;
+                }
+            }
         }
         return slots[minIndex];
     }
